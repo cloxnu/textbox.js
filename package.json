@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack --config webpack.config.js --mode development",
+    "publish": "webpack --config webpack.config.js --mode production"
   },
   "devDependencies": {
     "css-loader": "^6.5.1",

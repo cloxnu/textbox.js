@@ -1,6 +1,6 @@
-import TextBox from "./TextBox";
+import TextBox from "./TextBox/TextBox";
 
 import './css/main.css';
 
 //@ts-ignore
-!('TextBox' in window) && (window.TextBox = TextBox);
+window.TextBox = TextBox;
