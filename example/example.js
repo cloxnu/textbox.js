@@ -1,2 +1,2 @@
 let tb = new TextBox();
-tb.show();
+tb.render();

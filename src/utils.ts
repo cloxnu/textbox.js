@@ -10,4 +10,14 @@ const generate_id = () => {
     return now + result;
 }
 
-export default generate_id;
+const empty = (e?: any): boolean => {
+    if (e == null || typeof(e) == "undefined") {
+        return true;
+    }
+    return false;
+}
+
+export default {
+    generate_id,
+    empty
+};
