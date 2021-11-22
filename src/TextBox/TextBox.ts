@@ -1,18 +1,17 @@
 import utils from "../utils";
 import BaseBox from "./BaseBox";
-import { TextBoxConfig, TextBoxDefaultConfig } from "../Config/TextBoxConfig";
 import { Component } from "../Component/Component";
 import { MessageComponent } from "../Component/MessageComponent";
 import { ButtonComponent } from "../Component/ButtonComponent";
+import { UserConfig } from "../Config/Config";
 
 class TextBox extends BaseBox {
     private messageComponent: MessageComponent
     protected content?: Component
     private buttonComponent: ButtonComponent
 
-    constructor(config: TextBoxConfig) {
+    constructor(config: UserConfig) {
         super(config);
-        config = Object.assign({}, new TextBoxDefaultConfig(), config);
         this.messageComponent = new MessageComponent(config);
         this.buttonComponent = new ButtonComponent(config);
     }

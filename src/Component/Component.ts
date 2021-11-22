@@ -1,12 +1,17 @@
-interface ComponentConfig {
-    id: string,
-}
+import { DefaultConfig } from "../Config/Config";
 
 interface Component {
-    element: HTMLElement,
+    config: ComponentConfig,
+    default: DefaultConfig,
+    buildElement(): HTMLElement,
 }
+
+interface ComponentConfig {}
+
+class ComponentDefaultConfig extends DefaultConfig implements ComponentConfig {}
 
 export {
     ComponentConfig,
+    ComponentDefaultConfig,
     Component,
 }

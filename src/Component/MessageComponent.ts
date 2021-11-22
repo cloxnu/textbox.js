@@ -1,18 +1,30 @@
 import { Component, ComponentConfig } from "./Component";
+import { DefaultConfig, UserConfig } from "../Config/Config";
 
 interface MessageComponentConfig extends ComponentConfig {
-    message: string
+    message: string,
+}
+
+class MessageComponentDefaultConfig extends DefaultConfig implements MessageComponentConfig {
+    message = "";
 }
 
 class MessageComponent implements Component {
-    element: HTMLElement;
+    config: MessageComponentConfig;
 
-    constructor(config: MessageComponentConfig) {
+    get default() {
+        return new MessageComponentDefaultConfig();
+    }
+
+    constructor(config: UserConfig) {
+        this.config = this.default.set(config);
+    }
+
+    buildElement(): HTMLElement {
         let ele = document.createElement('span');
-        ele.id = `text-box-${config.id}-message`;
         ele.classList.add('text-box-message');
-        ele.innerText = config.message;
-        this.element = ele;
+        ele.innerText = this.config.message;
+        return ele;
     }
 }
 

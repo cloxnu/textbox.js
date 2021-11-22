@@ -1,11 +1,11 @@
 import { Component } from "../Component/Component";
-import { TextBoxConfig } from "../Config/TextBoxConfig";
+import { UserConfig } from "../Config/Config";
 import TextBox from "./TextBox";
 
 class InputTextBox extends TextBox {
     protected content?: Component | undefined
 
-    constructor(config: TextBoxConfig) {
+    constructor(config: UserConfig) {
         super(config);
     }
     

@@ -1,23 +1,32 @@
+import utils from '../utils';
 import { Component } from '../Component/Component';
-import { BoxConfig, DefaultConfig } from '../Config/BoxConfig';
+import { DefaultConfig, UserConfig } from '../Config/Config';
+
+interface BoxConfig {
+    id: string,
+    title: string,
+}
+
+class BoxDefaultConfig extends DefaultConfig implements BoxConfig {
+    id = utils.generate_id();
+    title = "";
+}
 
 class BaseBox {
-    protected id: string;
-    protected title: string;
+    private config: BoxConfig;
     private components: Component[] = [];
 
-    constructor(config: BoxConfig) {
-        config = Object.assign({}, new DefaultConfig(), config);
-        this.id = config.id;
-        this.title = config.title;
+    constructor(config: UserConfig) {
+        const defaultConfig = new BoxDefaultConfig();
+        this.config = defaultConfig.set(config);
     }
 
     render() {
-        console.log('TextBox render: ' + this.id);
+        console.log('TextBox render: ' + this.config.id);
     }
 
     destroy() {
-        console.log('TextBox destory: ' + this.id);
+        console.log('TextBox destory: ' + this.config.title);
     }
 
     get getComponents(): Component[] {
