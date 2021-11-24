@@ -7,7 +7,6 @@ import { UserConfig } from "../Config/Config";
 
 class TextBox extends BaseBox {
     private messageComponent: MessageComponent
-    protected content?: Component
     private buttonComponent: ButtonComponent
 
     constructor(config: UserConfig) {
@@ -16,11 +15,11 @@ class TextBox extends BaseBox {
         this.buttonComponent = new ButtonComponent(config);
     }
 
-    get getContent(): Component | undefined {
+    get content(): Component | undefined {
         return undefined;
     }
 
-    get getComponents(): Component[] {
+    get components(): Component[] {
         if (utils.empty(this.content)) {
             return [
                 this.messageComponent, 

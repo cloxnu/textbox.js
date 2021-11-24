@@ -14,7 +14,6 @@ class BoxDefaultConfig extends DefaultConfig implements BoxConfig {
 
 class BaseBox {
     private config: BoxConfig;
-    private components: Component[] = [];
 
     constructor(config: UserConfig) {
         const defaultConfig = new BoxDefaultConfig();
@@ -29,8 +28,8 @@ class BaseBox {
         console.log('TextBox destory: ' + this.config.title);
     }
 
-    get getComponents(): Component[] {
-        return this.components;
+    get components(): Component[] {
+        return [];
     }
 }
 
