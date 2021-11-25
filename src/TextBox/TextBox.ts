@@ -1,9 +1,8 @@
 import utils from "../utils";
 import BaseBox from "./BaseBox";
-import { Component } from "../Component/Component";
+import { Component, UserConfig } from "../Component/Component";
 import { MessageComponent } from "../Component/MessageComponent";
 import { ButtonComponent } from "../Component/ButtonComponent";
-import { UserConfig } from "../Config/Config";
 
 class TextBox extends BaseBox {
     private messageComponent: MessageComponent

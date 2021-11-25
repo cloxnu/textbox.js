@@ -1,5 +1,4 @@
-import { Component } from "../Component/Component";
-import { UserConfig } from "../Config/Config";
+import { Component, UserConfig } from "../Component/Component";
 import TextBox from "./TextBox";
 
 class InputTextBox extends TextBox {
