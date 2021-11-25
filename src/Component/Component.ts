@@ -1,17 +1,38 @@
-import { DefaultConfig } from "../Config/Config";
+import utils from "../utils";
 
-interface Component {
-    config: ComponentConfig,
-    default: DefaultConfig,
-    buildElement(): HTMLElement,
+type UserConfig = Object;
+
+class ComponentConfig {}
+
+class Component <T extends ComponentConfig = ComponentConfig> {
+    config: T;
+    
+    protected get default(): T {
+        throw new Error("default getter method must be implemented!");
+    }
+
+    constructor(config: UserConfig) {
+        this.config = Object.assign({}, this.default, config);
+    }
+
+    /** Element */
+
+    private _element?: HTMLElement;
+
+    public get element(): HTMLElement {
+        if (utils.empty(this._element)) {
+            this._element = this.buildElement();
+        }
+        return this._element!;
+    }
+
+    protected buildElement(): HTMLElement {
+        throw new Error("buildElement method must be implemented!");
+    }
 }
 
-interface ComponentConfig {}
-
-class ComponentDefaultConfig extends DefaultConfig implements ComponentConfig {}
-
 export {
+    UserConfig,
     ComponentConfig,
-    ComponentDefaultConfig,
     Component,
 }
