@@ -5,8 +5,8 @@ import { MessageComponent } from "../Component/MessageComponent";
 import { ButtonComponent } from "../Component/ButtonComponent";
 
 class TextBox extends BaseBox {
-    private messageComponent: MessageComponent
-    private buttonComponent: ButtonComponent
+    private messageComponent: MessageComponent;
+    private buttonComponent: ButtonComponent;
 
     constructor(config: UserConfig) {
         super(config);
@@ -18,7 +18,7 @@ class TextBox extends BaseBox {
         return undefined;
     }
 
-    get components(): Component[] {
+    protected get components(): Component[] {
         if (utils.empty(this.content)) {
             return [
                 this.messageComponent, 

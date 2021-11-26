@@ -5,7 +5,7 @@ class MessageComponentConfig extends ComponentConfig {
 }
 
 class MessageComponent extends Component <MessageComponentConfig> {
-    get default() {
+    protected get default() {
         return new MessageComponentConfig();
     }
 
@@ -16,7 +16,7 @@ class MessageComponent extends Component <MessageComponentConfig> {
     protected buildElement(): HTMLElement {
         let ele = document.createElement('span');
         ele.classList.add('text-box-message');
-        ele.innerText = this.config.message;
+        ele.textContent = this.config.message;
         return ele;
     }
 }
