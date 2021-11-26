@@ -5,7 +5,7 @@ class ButtonComponentConfig extends ComponentConfig {
 }
 
 class ButtonComponent extends Component <ButtonComponentConfig> {
-    get default() {
+    protected get default() {
         return new ButtonComponentConfig();
     }
 
@@ -39,11 +39,11 @@ class ButtonComponent extends Component <ButtonComponentConfig> {
             for (let index = 0; index < this.config.btn_text.length; index++) {
                 let button = document.createElement('button');
                 button.classList.add("text-box-submit-btn");
-                button.innerText = this.config.btn_text[index];
+                button.textContent = this.config.btn_text[index];
                 this._buttons.push(button);
             }
         }
-        return this._buttons!;
+        return this._buttons;
     }
 }
 
