@@ -19,12 +19,12 @@ class BaseBox extends Component <BoxConfig> {
 
     render(): void {
         if (this.exists) {
+            this.show();
             return;
         }
         console.log('TextBox render: ' + this.config.id);
         this.exists = true;
         document.body.appendChild(this.element);
-        this.show();
     }
 
     show(): void {
