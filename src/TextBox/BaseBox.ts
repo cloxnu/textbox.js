@@ -1,9 +1,12 @@
 import utils from '../utils';
-import { Component, ComponentConfig, UserConfig } from '../Component/Component';
+import { Component, UserConfig, OuterConfig } from '../Component/Component';
+import { InnerConfig } from '../Config/Config';
 
-class BoxConfig extends ComponentConfig {
+class BoxConfig extends OuterConfig {
     id: string = utils.generate_id();
     title: string = "";
+    get entrance(): any { return this; }
+    getInnerConfig(): InnerConfig { return this; }
 }
 
 class BaseBox extends Component <BoxConfig> {
@@ -22,7 +25,7 @@ class BaseBox extends Component <BoxConfig> {
             this.show();
             return;
         }
-        console.log('TextBox render: ' + this.config.id);
+        console.log('Box render: ' + this.outerConfig.id);
         this.exists = true;
         document.body.appendChild(this.element);
     }
@@ -43,7 +46,7 @@ class BaseBox extends Component <BoxConfig> {
         if (!this.exists) {
             return;
         }
-        console.log('TextBox destory: ' + this.config.id);
+        console.log('Box destory: ' + this.outerConfig.id);
         this.hide();
         this.exists = false;
         setTimeout(() => {
@@ -122,7 +125,7 @@ class BaseBox extends Component <BoxConfig> {
         if (utils.empty(this._titleElement)) {
             let ele = document.createElement('span');
             ele.classList.add('text-box-title');
-            ele.textContent = this.config.title;
+            ele.textContent = this.outerConfig.title;
             this._titleElement = ele;
         }
         return this._titleElement!;

@@ -1,18 +1,15 @@
+import { OuterConfig, UserConfig } from "../Config/Config";
 import utils from "../utils";
 
-type UserConfig = Object;
-
-class ComponentConfig {}
-
-class Component <T extends ComponentConfig = ComponentConfig> {
-    config: T;
+class Component <T extends OuterConfig = OuterConfig> {
+    outerConfig: T;
     
     protected get default(): T {
         throw new Error("default getter method must be implemented!");
     }
 
     constructor(config: UserConfig) {
-        this.config = Object.assign({}, this.default, config);
+        this.outerConfig = Object.assign({}, this.default, config);
     }
 
     /** Element */
@@ -33,6 +30,6 @@ class Component <T extends ComponentConfig = ComponentConfig> {
 
 export {
     UserConfig,
-    ComponentConfig,
+    OuterConfig,
     Component,
 }

@@ -1,16 +1,16 @@
-import { Component, ComponentConfig, UserConfig } from "./Component";
+import { ButtonInnerConfig, ButtonOuterConfig } from "../Config/ButtonConfig";
+import { Component, UserConfig } from "./Component";
 
-class ButtonComponentConfig extends ComponentConfig {
-    btn_text: string[] = ["OK"];
-}
+class ButtonComponent extends Component <ButtonOuterConfig> {
+    private config: ButtonInnerConfig;
 
-class ButtonComponent extends Component <ButtonComponentConfig> {
     protected get default() {
-        return new ButtonComponentConfig();
+        return new ButtonOuterConfig();
     }
 
     constructor(config: UserConfig) {
         super(config);
+        this.config = this.outerConfig.getInnerConfig();
     }
 
     protected buildElement(): HTMLElement {
@@ -36,10 +36,10 @@ class ButtonComponent extends Component <ButtonComponentConfig> {
 
     get buttons(): HTMLButtonElement[] {
         if (this._buttons.length == 0) {
-            for (let index = 0; index < this.config.btn_text.length; index++) {
+            for (let index = 0; index < this.config.buttons.length; index++) {
                 let button = document.createElement('button');
                 button.classList.add("text-box-submit-btn");
-                button.textContent = this.config.btn_text[index];
+                button.textContent = this.config.buttons[index].text;
                 this._buttons.push(button);
             }
         }
@@ -47,7 +47,6 @@ class ButtonComponent extends Component <ButtonComponentConfig> {
     }
 }
 
-export {
-    ButtonComponentConfig, 
+export { 
     ButtonComponent,
 }
