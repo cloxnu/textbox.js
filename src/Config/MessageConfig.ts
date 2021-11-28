@@ -1,34 +1,45 @@
-import { OuterConfig } from "../Component/Component";
-import { InnerConfig } from "./Config";
+import { ConfigConverter, InnerConfig } from "./Config";
+
+declare global {
+    interface OuterConfig {
+        message: string | object;
+    }
+}
 
 class MessageInnerConfig extends InnerConfig {
     content = "";
-    color = "#243";
 }
 
-class MessageOuterConfig extends OuterConfig {
-    message: string | object = "";
-
-    get entrance() {
-        return this.message;
+class MessageConfigConverter extends ConfigConverter <MessageInnerConfig> {
+    get entrance(): any {
+        return this.outerConfig.message;
     }
 
-    getInnerConfig(): MessageInnerConfig {
-        let config = new MessageInnerConfig();
-        switch (typeof this.entrance) {
-            case 'string':
-                config.content = this.message as string;
-                break;
-            case 'object':
-                config = {...config, ...this.entrance as object};
-                break;
+    get default(): Partial<OuterConfig> {
+        return {
+            message: "",
         }
+    }
+
+    /** Convert Method */
+
+    stringEntrance(): MessageInnerConfig {
+        let config = new MessageInnerConfig();
+        config.content = this.outerConfig.message as string;
         return config;
+    }
+
+    numberEntrance(): MessageInnerConfig {
+        return this.stringEntrance();
+    }
+
+    objectEntrance(): MessageInnerConfig {
+        return {...new MessageInnerConfig(), ...this.entrance as object};
     }
 }
 
 export {
     MessageInnerConfig,
-    MessageOuterConfig,
+    MessageConfigConverter,
 }
 

@@ -1,18 +1,13 @@
-import { MessageInnerConfig, MessageOuterConfig } from "../Config/MessageConfig";
+import { MessageConfigConverter, MessageInnerConfig } from "../Config/MessageConfig";
 import { Component, UserConfig } from "./Component";
 
-class MessageComponent extends Component <MessageOuterConfig> {
+class MessageComponent extends Component {
     private config: MessageInnerConfig;
 
-    protected get default() {
-        return new MessageOuterConfig();
-    }
-
     constructor(config: UserConfig) {
-        console.log(typeof new MessageOuterConfig().getInnerConfig);
-        super(config);
-        console.log(typeof this.outerConfig.getInnerConfig);
-        this.config = this.outerConfig.getInnerConfig();
+        super();
+        let configConverter = new MessageConfigConverter(config);
+        this.config = configConverter.toInnerConfig() ?? new MessageInnerConfig();
     }
 
     protected buildElement(): HTMLElement {

@@ -1,16 +1,13 @@
-import { ButtonInnerConfig, ButtonOuterConfig } from "../Config/ButtonConfig";
+import { ButtonConfigConverter, ButtonInnerConfig } from "../Config/ButtonConfig";
 import { Component, UserConfig } from "./Component";
 
-class ButtonComponent extends Component <ButtonOuterConfig> {
+class ButtonComponent extends Component {
     private config: ButtonInnerConfig;
 
-    protected get default() {
-        return new ButtonOuterConfig();
-    }
-
     constructor(config: UserConfig) {
-        super(config);
-        this.config = this.outerConfig.getInnerConfig();
+        super();
+        let configConverter = new ButtonConfigConverter(config);
+        this.config = configConverter.toInnerConfig() ?? new ButtonInnerConfig();
     }
 
     protected buildElement(): HTMLElement {

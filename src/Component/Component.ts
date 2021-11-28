@@ -1,17 +1,7 @@
 import { OuterConfig, UserConfig } from "../Config/Config";
 import utils from "../utils";
 
-class Component <T extends OuterConfig = OuterConfig> {
-    outerConfig: T;
-    
-    protected get default(): T {
-        throw new Error("default getter method must be implemented!");
-    }
-
-    constructor(config: UserConfig) {
-        this.outerConfig = Object.assign({}, this.default, config);
-    }
-
+class Component {
     /** Element */
 
     private _element?: HTMLElement;
