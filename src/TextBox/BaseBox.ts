@@ -1,41 +1,54 @@
 import utils from '../utils';
-import { Component, ComponentConfig, UserConfig } from '../Component/Component';
+import { Component, UserConfig } from '../Component/Component';
 
-class BoxConfig extends ComponentConfig {
+declare global {
+    interface OuterConfig {
+        id: string,
+        title: string,
+    }
+}
+
+class BoxConfig {
     id: string = utils.generate_id();
     title: string = "";
 }
 
-class BaseBox extends Component <BoxConfig> {
+class BaseBox extends Component {
+    private config: BoxConfig;
     exists: boolean = false;
 
-    get default() {
-        return new BoxConfig();
-    }
-
     constructor(config: UserConfig) {
-        super(config);
+        super();
+        this.config = Object.assign({}, new BoxConfig(), config);
     }
 
     render(): void {
+        this._show();
         if (this.exists) {
-            this.show();
             return;
         }
-        console.log('TextBox render: ' + this.config.id);
+        console.log('Box render: ' + this.config.id);
         this.exists = true;
         document.body.appendChild(this.element);
     }
 
+    private _show(): void {
+        this.element.classList.remove('invisible');
+    }
+
+    private _hide(): void {
+        this.element.classList.add('invisible');
+    }
+
     show(): void {
         if (this.exists) {
-            this.element.classList.remove('invisible');
+            this._show();
         }
     }
 
     hide(): void {
         if (this.exists) {
-            this.element.classList.add('invisible');
+            this._hide();
         }
     }
 
@@ -43,8 +56,8 @@ class BaseBox extends Component <BoxConfig> {
         if (!this.exists) {
             return;
         }
-        console.log('TextBox destory: ' + this.config.id);
-        this.hide();
+        console.log('Box destory: ' + this.config.id);
+        this._hide();
         this.exists = false;
         setTimeout(() => {
             if (!this.exists) {
