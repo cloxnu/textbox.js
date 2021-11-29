@@ -1,5 +1,6 @@
 import utils from '../utils';
 import { Component, UserConfig } from '../Component/Component';
+import boxStyles from '../css/textbox.css';
 
 declare global {
     interface OuterConfig {
@@ -33,11 +34,11 @@ class BaseBox extends Component {
     }
 
     private _show(): void {
-        this.element.classList.remove('invisible');
+        this.element.classList.remove(boxStyles.invisible);
     }
 
     private _hide(): void {
-        this.element.classList.add('invisible');
+        this.element.classList.add(boxStyles.invisible);
     }
 
     show(): void {
@@ -81,7 +82,7 @@ class BaseBox extends Component {
 
     protected buildElement(): HTMLElement {
         let div = document.createElement('div');
-        div.classList.add('text-box-wrapper');
+        div.classList.add(boxStyles['text-box-wrapper']);
         div.appendChild(this.backdrop);
         div.appendChild(this.boxElement);
         return div;
@@ -90,7 +91,7 @@ class BaseBox extends Component {
     public get backdrop(): HTMLDivElement {
         if (utils.empty(this._backdrop)) {
             let ele = document.createElement('div');
-            ele.classList.add('text-box-backdrop');
+            ele.classList.add(boxStyles['text-box-backdrop']);
             this._backdrop = ele;
         }
         return this._backdrop!;
@@ -99,7 +100,7 @@ class BaseBox extends Component {
     public get boxElement(): HTMLDivElement {
         if (utils.empty(this._boxElement)) {
             let ele = document.createElement('div');
-            ele.classList.add('text-box');
+            ele.classList.add(boxStyles['text-box']);
             ele.appendChild(this.titleBar);
             ele.appendChild(this.boxContent);
             this._boxElement = ele;
@@ -110,7 +111,7 @@ class BaseBox extends Component {
     public get titleBar(): HTMLDivElement {
         if (utils.empty(this._titleBar)) {
             let ele = document.createElement('div');
-            ele.classList.add('text-box-title-bar');
+            ele.classList.add(boxStyles['text-box-title-bar']);
             ele.appendChild(this.titleElement);
             ele.appendChild(this.cancelButton);
             this._titleBar = ele;
@@ -121,7 +122,7 @@ class BaseBox extends Component {
     public get boxContent(): HTMLDivElement {
         if (utils.empty(this._boxContent)) {
             let ele = document.createElement('div');
-            ele.classList.add('text-box-content');
+            ele.classList.add(boxStyles['text-box-content']);
 
             this.components.forEach(component => {
                 ele.appendChild(component.element);
@@ -134,7 +135,7 @@ class BaseBox extends Component {
     public get titleElement(): HTMLSpanElement {
         if (utils.empty(this._titleElement)) {
             let ele = document.createElement('span');
-            ele.classList.add('text-box-title');
+            ele.classList.add(boxStyles['text-box-title']);
             ele.textContent = this.config.title;
             this._titleElement = ele;
         }
@@ -145,7 +146,7 @@ class BaseBox extends Component {
         if (utils.empty(this._cancelButton)) {
             let box = this;
             let ele = document.createElement('button');
-            ele.classList.add('text-box-cancel');
+            ele.classList.add(boxStyles['text-box-cancel']);
             ele.onclick = () => {
                 box.destroy();
             }
