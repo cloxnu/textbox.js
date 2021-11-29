@@ -1,5 +1,7 @@
 import { ButtonConfigConverter, ButtonInnerConfig } from "../Config/ButtonConfig";
 import { Component, UserConfig } from "./Component";
+import buttonStyles from '../css/button.css';
+import boxStyles from '../css/textbox.css';
 
 class ButtonComponent extends Component {
     private config: ButtonInnerConfig;
@@ -18,7 +20,7 @@ class ButtonComponent extends Component {
         */
 
         let div = document.createElement('div');
-        div.classList.add('text-box-btn-div');
+        div.classList.add(boxStyles["text-box-btn-div"]);
 
         for (let index = 0; index < this.buttons.length; index++) {
             const button = this.buttons[index];
@@ -35,7 +37,7 @@ class ButtonComponent extends Component {
         if (this._buttons.length == 0) {
             for (let index = 0; index < this.config.buttons.length; index++) {
                 let button = document.createElement('button');
-                button.classList.add("text-box-submit-btn");
+                button.classList.add(buttonStyles["text-box-submit-btn"]);
                 button.textContent = this.config.buttons[index].text;
                 this._buttons.push(button);
             }

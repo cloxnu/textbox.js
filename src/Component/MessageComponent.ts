@@ -1,5 +1,6 @@
 import { MessageConfigConverter, MessageInnerConfig } from "../Config/MessageConfig";
 import { Component, UserConfig } from "./Component";
+import boxStyles from '../css/textbox.css';
 
 class MessageComponent extends Component {
     private config: MessageInnerConfig;
@@ -12,7 +13,7 @@ class MessageComponent extends Component {
 
     protected buildElement(): HTMLElement {
         let ele = document.createElement('span');
-        ele.classList.add('text-box-message');
+        ele.classList.add(boxStyles["text-box-message"]);
         ele.textContent = this.config.content;
         return ele;
     }
