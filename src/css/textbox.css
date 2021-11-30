@@ -182,7 +182,7 @@
     cursor: pointer;
 }
 
-.textbox-cancel img {
+.textbox-cancel svg {
     width: auto;
     height: 12px;
     filter: var(--gray-filter);

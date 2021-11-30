@@ -3,6 +3,9 @@ import { Component, UserConfig } from '../Component/Component';
 import boxStyles from '../css/textbox.css';
 import BoxDelegate from './BoxDelegate';
 
+//@ts-ignore
+import buttonCancelSvg from '../assets/x.svg';
+
 declare global {
     interface OuterConfig {
         id: string,
@@ -150,8 +153,8 @@ class BaseBox extends Component implements BoxDelegate {
             ele.classList.add(boxStyles['textbox-cancel']);
             ele.onclick = () => {
                 box.destroy();
-            }
-            ele.innerHTML = "Cancel"; // x.svg needed
+            };
+            ele.innerHTML = buttonCancelSvg;
             this._cancelButton = ele;
         }
         return this._cancelButton!;
