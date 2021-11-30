@@ -236,7 +236,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \*********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _TextBox_BaseBox__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TextBox/BaseBox */ \"./src/TextBox/BaseBox.ts\");\n/* harmony import */ var _TextBox_TextBox__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TextBox/TextBox */ \"./src/TextBox/TextBox.ts\");\n/* harmony import */ var _css_main_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./css/main.css */ \"./src/css/main.css\");\n/* harmony import */ var _css_textbox_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./css/textbox.css */ \"./src/css/textbox.css\");\n/* harmony import */ var _css_button_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./css/button.css */ \"./src/css/button.css\");\n\n\n\n\n\n//@ts-ignore\nwindow.BaseBox = _TextBox_BaseBox__WEBPACK_IMPORTED_MODULE_0__[\"default\"];\n//@ts-ignore\nwindow.TextBox = _TextBox_TextBox__WEBPACK_IMPORTED_MODULE_1__[\"default\"];\n\n\n//# sourceURL=webpack:///./src/main.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _TextBox_BaseBox__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TextBox/BaseBox */ \"./src/TextBox/BaseBox.ts\");\n/* harmony import */ var _TextBox_TextBox__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TextBox/TextBox */ \"./src/TextBox/TextBox.ts\");\n/* harmony import */ var _css_main_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./css/main.css */ \"./src/css/main.css\");\n/* harmony import */ var _css_textbox_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./css/textbox.css */ \"./src/css/textbox.css\");\n/* harmony import */ var _css_button_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./css/button.css */ \"./src/css/button.css\");\n/* harmony import */ var _shortcut__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./shortcut */ \"./src/shortcut.ts\");\n\n\n\n\n\n\n//@ts-ignore\nwindow.BaseBox = _TextBox_BaseBox__WEBPACK_IMPORTED_MODULE_0__[\"default\"];\n//@ts-ignore\nwindow.TextBox = _TextBox_TextBox__WEBPACK_IMPORTED_MODULE_1__[\"default\"];\n//@ts-ignore\nwindow.textbox = _shortcut__WEBPACK_IMPORTED_MODULE_5__.textbox;\n\n\n//# sourceURL=webpack:///./src/main.ts?");
+
+/***/ }),
+
+/***/ "./src/shortcut.ts":
+/*!*************************!*\
+  !*** ./src/shortcut.ts ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"textbox\": () => (/* binding */ textbox)\n/* harmony export */ });\n/* harmony import */ var _TextBox_TextBox__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TextBox/TextBox */ \"./src/TextBox/TextBox.ts\");\n\nfunction textbox(config) {\n    var tb = new _TextBox_TextBox__WEBPACK_IMPORTED_MODULE_0__[\"default\"](config);\n    tb.render();\n    return tb;\n}\n\n\n\n//# sourceURL=webpack:///./src/shortcut.ts?");
 
 /***/ }),
 
