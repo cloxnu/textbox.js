@@ -246,7 +246,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Tex
   \*************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"textbox\": () => (/* binding */ textbox)\n/* harmony export */ });\n/* harmony import */ var _TextBox_TextBox__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TextBox/TextBox */ \"./src/TextBox/TextBox.ts\");\n\nfunction textbox(config) {\n    var tb = new _TextBox_TextBox__WEBPACK_IMPORTED_MODULE_0__[\"default\"](config);\n    tb.render();\n    return tb;\n}\n\n\n\n//# sourceURL=webpack:///./src/shortcut.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"textbox\": () => (/* binding */ textbox)\n/* harmony export */ });\n/* harmony import */ var _TextBox_TextBox__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TextBox/TextBox */ \"./src/TextBox/TextBox.ts\");\n\nfunction generate(box) {\n    box.render();\n    return box;\n}\nfunction textbox(config) {\n    return generate(new _TextBox_TextBox__WEBPACK_IMPORTED_MODULE_0__[\"default\"](config));\n}\n\n\n\n//# sourceURL=webpack:///./src/shortcut.ts?");
 
 /***/ }),
 
