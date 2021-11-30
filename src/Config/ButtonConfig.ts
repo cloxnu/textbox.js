@@ -3,11 +3,13 @@ import { ConfigConverter, InnerConfig } from "./Config";
 declare global {
     interface OuterConfig {
         button: string | string[] | object | object[];
+        btn_callback: () => boolean;
     }
 }
 
 class OneButtonInnerConfig {
     text = "";
+    callback = () => { return true; }
 }
 
 class ButtonInnerConfig extends InnerConfig {
@@ -22,6 +24,7 @@ class ButtonConfigConverter extends ConfigConverter <ButtonInnerConfig> {
     get default(): Partial<OuterConfig> {
         return {
             button: "OK",
+            btn_callback: () => { return true; },
         }
     }
 
@@ -31,6 +34,10 @@ class ButtonConfigConverter extends ConfigConverter <ButtonInnerConfig> {
         let config = new ButtonInnerConfig();
         let oneConfig = new OneButtonInnerConfig();
         oneConfig.text = this.outerConfig.button as string;
+        if (typeof this.outerConfig.btn_callback == 'function') {
+            oneConfig.callback = this.outerConfig.btn_callback;
+        }
+
         config.buttons = [oneConfig]; 
         return config;
     }

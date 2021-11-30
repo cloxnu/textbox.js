@@ -12,6 +12,7 @@ class TextBox extends BaseBox {
         super(config);
         this.messageComponent = new MessageComponent(config);
         this.buttonComponent = new ButtonComponent(config);
+        this.buttonComponent.boxDelegate = this;
     }
 
     get content(): Component | undefined {

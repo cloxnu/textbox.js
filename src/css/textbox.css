@@ -93,7 +93,7 @@
 /*    cursor: pointer;*/
 /*}*/
 
-.text-box-wrapper {
+.textbox-wrapper {
     position: fixed;
     width: 100vw;
     height: 100vh;
@@ -104,15 +104,15 @@
     align-items: center;
     justify-content: center;
     transition: opacity 0.3s, visibility 0.3s;
-    animation: text-box-appear-opacity 0.3s;
+    animation: textbox-appear-opacity 0.3s;
 }
 
-.text-box-wrapper.invisible {
+.textbox-wrapper.invisible {
     opacity: 0;
     visibility: hidden;
 }
 
-.text-box-backdrop {
+.textbox-backdrop {
     background-color: var(--clear-black);
     position: absolute;
     top: 0;
@@ -121,7 +121,7 @@
     height: 100vh;
 }
 
-.text-box {
+.textbox {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -131,24 +131,24 @@
     width: 400px;
     max-width: 80%;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1.4);
-    animation: text-box-appear-scale 0.3s cubic-bezier(0.4, 0, 0.2, 1.4);
+    animation: textbox-appear-scale 0.3s cubic-bezier(0.4, 0, 0.2, 1.4);
 }
 
-.text-box-wrapper.invisible .text-box {
+.textbox-wrapper.invisible .textbox {
     transform: scale(0.1);
 }
 
-@keyframes text-box-appear-opacity {
+@keyframes textbox-appear-opacity {
     0% { opacity: 0; }
     100% { opacity: 1; }
 }
 
-@keyframes text-box-appear-scale {
+@keyframes textbox-appear-scale {
     0% { transform: scale(0.1); }
     100% { transform: scale(1); }
 }
 
-.text-box-title-bar {
+.textbox-title-bar {
     position: relative;
     width: 100%;
     height: 60px;
@@ -158,7 +158,7 @@
     justify-content: space-between;
 }
 
-.text-box-title {
+.textbox-title {
     height: 60px;
     margin-left: 20px;
     font-size: 16px;
@@ -168,7 +168,7 @@
     align-items: center;
 }
 
-.text-box-cancel {
+.textbox-cancel {
     display: flex;
     align-content: center;
     align-items: center;
@@ -182,33 +182,33 @@
     cursor: pointer;
 }
 
-.text-box-cancel img {
+.textbox-cancel img {
     width: auto;
     height: 12px;
     filter: var(--gray-filter);
 }
 
-.text-box-content {
+.textbox-content {
     position: relative;
     display: flex;
     flex-direction: column;
     margin: 10px 20px 14px;
 }
 
-.text-box-message {
+.textbox-message {
     text-align: left;
     word-break: break-all;
     max-height: 60vh;
     overflow-y: auto;
 }
 
-.text-box-btn-div {
+.textbox-btn-div {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 }
 
-.text-box-select {
+.textbox-select {
     cursor: pointer;
 }

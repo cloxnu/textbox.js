@@ -2,18 +2,18 @@
 // Please do not change this file!
 interface CssExports {
   'invisible': string;
-  'text-box': string;
-  'text-box-appear-opacity': string;
-  'text-box-appear-scale': string;
-  'text-box-backdrop': string;
-  'text-box-btn-div': string;
-  'text-box-cancel': string;
-  'text-box-content': string;
-  'text-box-message': string;
-  'text-box-select': string;
-  'text-box-title': string;
-  'text-box-title-bar': string;
-  'text-box-wrapper': string;
+  'textbox': string;
+  'textbox-appear-opacity': string;
+  'textbox-appear-scale': string;
+  'textbox-backdrop': string;
+  'textbox-btn-div': string;
+  'textbox-cancel': string;
+  'textbox-content': string;
+  'textbox-message': string;
+  'textbox-select': string;
+  'textbox-title': string;
+  'textbox-title-bar': string;
+  'textbox-wrapper': string;
 }
 export const cssExports: CssExports;
 export default cssExports;
