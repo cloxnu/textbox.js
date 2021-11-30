@@ -1,10 +1,14 @@
 import { UserConfig } from "./Config/Config";
+import BaseBox from "./TextBox/BaseBox";
 import TextBox from "./TextBox/TextBox";
 
+function generate(box: BaseBox) {
+    box.render();
+    return box;
+}
+
 function textbox(config: UserConfig) {
-    const tb = new TextBox(config);
-    tb.render();
-    return tb;
+    return generate(new TextBox(config));
 }
 
 export {
