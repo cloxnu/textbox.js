@@ -2,6 +2,7 @@ import { ButtonConfigConverter, ButtonInnerConfig } from "../Config/ButtonConfig
 import { Component, UserConfig } from "./Component";
 import buttonStyles from '../css/button.css';
 import boxStyles from '../css/textbox.css';
+import BoxDelegate from "../TextBox/BoxDelegate";
 
 class ButtonComponent extends Component {
     private config: ButtonInnerConfig;
@@ -20,7 +21,7 @@ class ButtonComponent extends Component {
         */
 
         let div = document.createElement('div');
-        div.classList.add(boxStyles["text-box-btn-div"]);
+        div.classList.add(boxStyles["textbox-btn-div"]);
 
         for (let index = 0; index < this.buttons.length; index++) {
             const button = this.buttons[index];
@@ -32,13 +33,20 @@ class ButtonComponent extends Component {
     /** Elements */
 
     private _buttons: HTMLButtonElement[] = [];
+    public boxDelegate?: BoxDelegate;
 
     get buttons(): HTMLButtonElement[] {
         if (this._buttons.length == 0) {
             for (let index = 0; index < this.config.buttons.length; index++) {
+                const buttonConfig = this.config.buttons[index];
                 let button = document.createElement('button');
-                button.classList.add(buttonStyles["text-box-submit-btn"]);
-                button.textContent = this.config.buttons[index].text;
+                button.classList.add(buttonStyles["submit-btn"]);
+                button.textContent = buttonConfig.text;
+                button.onclick = () => {
+                    if (buttonConfig.callback()) {
+                        this.boxDelegate?.destroy();
+                    }
+                }
                 this._buttons.push(button);
             }
         }

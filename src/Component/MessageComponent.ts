@@ -13,7 +13,7 @@ class MessageComponent extends Component {
 
     protected buildElement(): HTMLElement {
         let ele = document.createElement('span');
-        ele.classList.add(boxStyles["text-box-message"]);
+        ele.classList.add(boxStyles["textbox-message"]);
         ele.textContent = this.config.content;
         return ele;
     }
