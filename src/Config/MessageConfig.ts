@@ -1,40 +1,32 @@
-import { ConfigConverter, InnerConfig } from "./Config";
-
-declare global {
-    interface OuterConfig {
-        message: string | object;
-    }
-}
+import { ConfigConverter, InnerConfig, OuterConfig } from "./Config";
 
 class MessageInnerConfig extends InnerConfig {
     content = "";
 }
 
 class MessageConfigConverter extends ConfigConverter <MessageInnerConfig> {
-    get entrance(): any {
-        return this.outerConfig.message;
+    get defaultName(): string {
+        return "message";
     }
-
-    get default(): Partial<OuterConfig> {
-        return {
-            message: "",
-        }
+    
+    get defaultValue(): string {
+        return "";
     }
 
     /** Convert Method */
 
-    stringEntrance(): MessageInnerConfig {
+    stringValue(value: string): MessageInnerConfig {
         let config = new MessageInnerConfig();
-        config.content = this.outerConfig.message as string;
+        config.content = value;
         return config;
     }
 
-    numberEntrance(): MessageInnerConfig {
-        return this.stringEntrance();
+    numberValue(value: number): MessageInnerConfig {
+        return this.stringValue(value.toString());
     }
 
-    objectEntrance(): MessageInnerConfig {
-        return {...new MessageInnerConfig(), ...this.entrance as object};
+    objectValue(value: Object): MessageInnerConfig {
+        return {...new MessageInnerConfig(), ...value};
     }
 }
 

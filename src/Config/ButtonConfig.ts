@@ -1,12 +1,5 @@
 import { ConfigConverter, InnerConfig } from "./Config";
 
-declare global {
-    interface OuterConfig {
-        button: string | string[] | object | object[];
-        btn_callback: () => boolean;
-    }
-}
-
 class OneButtonInnerConfig {
     text = "";
     callback = () => { return true; }
@@ -17,38 +10,32 @@ class ButtonInnerConfig extends InnerConfig {
 }
 
 class ButtonConfigConverter extends ConfigConverter <ButtonInnerConfig> {
-    get entrance(): any {
-        return this.outerConfig.button;
+    get defaultName(): string {
+        return "button";
     }
 
-    get default(): Partial<OuterConfig> {
-        return {
-            button: "OK",
-            btn_callback: () => { return true; },
-        }
+    get defaultValue(): string {
+        return "OK";
     }
 
     /** Convert Method */
 
-    stringEntrance(): ButtonInnerConfig {
+    stringValue(value: string): ButtonInnerConfig {
         let config = new ButtonInnerConfig();
         let oneConfig = new OneButtonInnerConfig();
-        oneConfig.text = this.outerConfig.button as string;
-        if (typeof this.outerConfig.btn_callback == 'function') {
-            oneConfig.callback = this.outerConfig.btn_callback;
-        }
+        oneConfig.text = value;
 
         config.buttons = [oneConfig]; 
         return config;
     }
 
-    numberEntrance(): ButtonInnerConfig {
-        return this.stringEntrance();
+    numberValue(value: number): ButtonInnerConfig {
+        return this.stringValue(value.toString());
     }
 
-    arrayEntrance(): ButtonInnerConfig {
+    arrayValue(value: Array<any>): ButtonInnerConfig {
         let config = new ButtonInnerConfig();
-        this.entrance.forEach((item: string | OneButtonInnerConfig) => {
+        value.forEach((item: string | OneButtonInnerConfig) => {
             let oneConfig = new OneButtonInnerConfig();
             if (typeof item == 'string') {
                 oneConfig.text = item;
@@ -61,9 +48,9 @@ class ButtonConfigConverter extends ConfigConverter <ButtonInnerConfig> {
         return config;
     }
 
-    objectEntrance(): ButtonInnerConfig {
+    objectValue(value: Object): ButtonInnerConfig {
         let config = new ButtonInnerConfig();
-        config.buttons = [{...new OneButtonInnerConfig(), ...this.outerConfig.button as object}];
+        config.buttons = [{...new OneButtonInnerConfig(), ...value}];
         return config;
     }
 }
