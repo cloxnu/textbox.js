@@ -2,7 +2,7 @@ import { Component, UserConfig } from "../Component/Component";
 import TextBox from "./TextBox";
 
 class InputTextBox extends TextBox {
-    constructor(config: UserConfig) {
+    constructor(config?: UserConfig) {
         super(config);
     }
     

@@ -14,10 +14,10 @@ class ConfigConverter <T extends InnerConfig = InnerConfig> {
     name: string;
     value: any;
 
-    constructor(config: UserConfig, name?: string) {
+    constructor(config?: UserConfig, name?: string) {
         this.name = name ?? this.defaultName;
-        let outerConfig: OuterConfig = config;
-        this.value = config.hasOwnProperty(this.name) ? outerConfig[this.name] : this.defaultValue;
+        let outerConfig: OuterConfig = config ?? {};
+        this.value = outerConfig.hasOwnProperty(this.name) ? outerConfig[this.name] : this.defaultValue;
     }
 
     get defaultName(): string {
@@ -51,7 +51,7 @@ class ConfigConverter <T extends InnerConfig = InnerConfig> {
     stringValue(value: string): T | undefined { return; }
     numberValue(value: number): T | undefined { return; }
     arrayValue(value: Array<any>): T | undefined { return; }
-    objectValue(value: Object): T | undefined { return; }
+    objectValue(value: OuterConfig): T | undefined { return; }
 }
 
 export {

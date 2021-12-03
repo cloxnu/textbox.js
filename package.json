@@ -13,5 +13,8 @@
     "typings-for-css-modules-loader": "^1.7.0",
     "webpack": "^5.64.1",
     "webpack-cli": "^4.9.1"
+  },
+  "dependencies": {
+    "codemirror": "^5.64.0"
   }
 }
