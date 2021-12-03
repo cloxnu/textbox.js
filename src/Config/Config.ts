@@ -6,37 +6,39 @@ class InnerConfig {
     }
 }
 
-declare global {
-    interface OuterConfig {}
+interface OuterConfig {
+    [key: string]: any;
 }
 
-
 class ConfigConverter <T extends InnerConfig = InnerConfig> {
-    outerConfig: Partial<OuterConfig>;
+    name: string;
+    value: any;
 
-    constructor(config: UserConfig) {
-        this.outerConfig = Object.assign({}, this.default, config);
+    constructor(config: UserConfig, name?: string) {
+        this.name = name ?? this.defaultName;
+        let outerConfig: OuterConfig = config;
+        this.value = config.hasOwnProperty(this.name) ? outerConfig[this.name] : this.defaultValue;
     }
 
-    get entrance(): any {
-        throw new Error("Entrance method must be implemented!");
+    get defaultName(): string {
+        return "";
     }
 
-    get default(): Partial<OuterConfig> {
-        return {};
+    get defaultValue(): any {
+        return "";
     }
 
     toInnerConfig(): T | undefined {
-        switch (typeof this.entrance) {
+        switch (typeof this.value) {
             case 'string':
-                return this.stringEntrance();
+                return this.stringValue(this.value);
             case 'number':
-                return this.numberEntrance();
+                return this.numberValue(this.value);
             case 'object':
-                if (Array.isArray(this.entrance)) {
-                    return this.arrayEntrance();
+                if (Array.isArray(this.value)) {
+                    return this.arrayValue(this.value);
                 } else {
-                    return this.objectEntrance();
+                    return this.objectValue(this.value);
                 }
             default:
                 break;
@@ -46,10 +48,10 @@ class ConfigConverter <T extends InnerConfig = InnerConfig> {
 
     /** Convert Method */
 
-    stringEntrance(): T | undefined { return; }
-    numberEntrance(): T | undefined { return; }
-    arrayEntrance(): T | undefined { return; }
-    objectEntrance(): T | undefined { return; }
+    stringValue(value: string): T | undefined { return; }
+    numberValue(value: number): T | undefined { return; }
+    arrayValue(value: Array<any>): T | undefined { return; }
+    objectValue(value: Object): T | undefined { return; }
 }
 
 export {

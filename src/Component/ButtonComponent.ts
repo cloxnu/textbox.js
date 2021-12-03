@@ -7,9 +7,9 @@ import BoxDelegate from "../TextBox/BoxDelegate";
 class ButtonComponent extends Component {
     private config: ButtonInnerConfig;
 
-    constructor(config: UserConfig) {
+    constructor(config: UserConfig, name?: string) {
         super();
-        let configConverter = new ButtonConfigConverter(config);
+        let configConverter = new ButtonConfigConverter(config, name);
         this.config = configConverter.toInnerConfig() ?? new ButtonInnerConfig();
     }
 

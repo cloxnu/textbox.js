@@ -6,13 +6,6 @@ import BoxDelegate from './BoxDelegate';
 //@ts-ignore
 import buttonCancelSvg from '../assets/x.svg';
 
-declare global {
-    interface OuterConfig {
-        id: string,
-        title: string,
-    }
-}
-
 class BoxConfig {
     id: string = utils.generate_id();
     title: string = "";
@@ -158,6 +151,15 @@ class BaseBox extends Component implements BoxDelegate {
             this._cancelButton = ele;
         }
         return this._cancelButton!;
+    }
+
+    /** More Function */
+
+    public static RemoveAllBox() {
+        let allBox = document.getElementsByClassName(boxStyles['textbox-wrapper']);
+        while(allBox[0]) {
+            allBox[0].remove();
+        }
     }
     
 }

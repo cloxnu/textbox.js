@@ -5,9 +5,9 @@ import boxStyles from '../css/textbox.css';
 class MessageComponent extends Component {
     private config: MessageInnerConfig;
 
-    constructor(config: UserConfig) {
+    constructor(config: UserConfig, name?: string) {
         super();
-        let configConverter = new MessageConfigConverter(config);
+        let configConverter = new MessageConfigConverter(config, name);
         this.config = configConverter.toInnerConfig() ?? new MessageInnerConfig();
     }
 
