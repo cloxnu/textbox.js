@@ -25,7 +25,7 @@ class MessageConfigConverter extends ConfigConverter <MessageInnerConfig> {
         return this.stringValue(value.toString());
     }
 
-    objectValue(value: Object): MessageInnerConfig {
+    objectValue(value: OuterConfig): MessageInnerConfig {
         return {...new MessageInnerConfig(), ...value};
     }
 }

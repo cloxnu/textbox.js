@@ -1,7 +1,8 @@
+import utils from "../utils";
 import { ConfigConverter, InnerConfig } from "./Config";
 
 class OneButtonInnerConfig {
-    text = "";
+    text = "OK";
     callback = () => { return true; }
 }
 
@@ -40,8 +41,8 @@ class ButtonConfigConverter extends ConfigConverter <ButtonInnerConfig> {
             if (typeof item == 'string') {
                 oneConfig.text = item;
             }
-            else if (typeof item == 'object') {
-                oneConfig = {...oneConfig, ...item};
+            else if (utils.isObject(item)) {
+                Object.assign(oneConfig, item);
             }
             config.buttons.push(oneConfig);
         })

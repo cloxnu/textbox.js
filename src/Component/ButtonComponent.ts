@@ -7,7 +7,7 @@ import BoxDelegate from "../TextBox/BoxDelegate";
 class ButtonComponent extends Component {
     private config: ButtonInnerConfig;
 
-    constructor(config: UserConfig, name?: string) {
+    constructor(config?: UserConfig, name?: string) {
         super();
         let configConverter = new ButtonConfigConverter(config, name);
         this.config = configConverter.toInnerConfig() ?? new ButtonInnerConfig();
@@ -43,7 +43,7 @@ class ButtonComponent extends Component {
                 button.classList.add(buttonStyles["submit-btn"]);
                 button.textContent = buttonConfig.text;
                 button.onclick = () => {
-                    if (buttonConfig.callback()) {
+                    if (typeof buttonConfig.callback == 'function' && buttonConfig.callback()) {
                         this.boxDelegate?.destroy();
                     }
                 }

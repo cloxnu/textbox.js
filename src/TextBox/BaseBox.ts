@@ -5,6 +5,8 @@ import BoxDelegate from './BoxDelegate';
 
 //@ts-ignore
 import buttonCancelSvg from '../assets/x.svg';
+import { PresetConfigConverter } from '../Config/PresetConfig';
+import { AliasConfigConverter } from '../Config/AliasConfig';
 
 class BoxConfig {
     id: string = utils.generate_id();
@@ -15,9 +17,24 @@ class BaseBox extends Component implements BoxDelegate {
     private config: BoxConfig;
     exists: boolean = false;
 
-    constructor(config: UserConfig) {
+    constructor(config?: UserConfig) {
         super();
+        if (typeof config != 'undefined') {
+            this.loadPresetConfig(config);
+            this.loadAliasConfig(config);
+        }
         this.config = Object.assign({}, new BoxConfig(), config);
+        console.log('Load config:', config);
+    }
+
+    private loadAliasConfig(config: UserConfig) {
+        let configConverter = new AliasConfigConverter(config);
+        configConverter.filter(config);
+    }
+
+    private loadPresetConfig(config: UserConfig) {
+        let configConverter = new PresetConfigConverter(config);
+        configConverter.filter(config);
     }
 
     render(): void {
@@ -25,7 +42,7 @@ class BaseBox extends Component implements BoxDelegate {
         if (this.exists) {
             return;
         }
-        console.log('Box render: ' + this.config.id);
+        console.log('Box render:', this.config.id);
         this.exists = true;
         document.body.appendChild(this.element);
     }
@@ -54,7 +71,7 @@ class BaseBox extends Component implements BoxDelegate {
         if (!this.exists) {
             return;
         }
-        console.log('Box destory: ' + this.config.id);
+        console.log('Box destory:', this.config.id);
         this._hide();
         this.exists = false;
         setTimeout(() => {

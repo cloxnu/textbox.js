@@ -8,7 +8,7 @@ class TextBox extends BaseBox {
     private messageComponent: MessageComponent;
     private buttonComponent: ButtonComponent;
 
-    constructor(config: UserConfig) {
+    constructor(config?: UserConfig) {
         super(config);
         this.messageComponent = new MessageComponent(config);
         this.buttonComponent = new ButtonComponent(config);
