@@ -1,9 +1,11 @@
+import _ from "lodash";
+import BoxDelegate from "../TextBox/BoxDelegate";
 import utils from "../utils";
 import { ConfigConverter, InnerConfig } from "./Config";
 
 class OneButtonInnerConfig {
     text = "OK";
-    callback = () => { return true; }
+    callback = (_?: BoxDelegate): boolean => { return true; }
 }
 
 class ButtonInnerConfig extends InnerConfig {
@@ -42,7 +44,7 @@ class ButtonConfigConverter extends ConfigConverter <ButtonInnerConfig> {
                 oneConfig.text = item;
             }
             else if (utils.isObject(item)) {
-                Object.assign(oneConfig, item);
+                oneConfig = _.merge(oneConfig, item);
             }
             config.buttons.push(oneConfig);
         })
@@ -51,7 +53,7 @@ class ButtonConfigConverter extends ConfigConverter <ButtonInnerConfig> {
 
     objectValue(value: Object): ButtonInnerConfig {
         let config = new ButtonInnerConfig();
-        config.buttons = [{...new OneButtonInnerConfig(), ...value}];
+        config.buttons = [_.merge(new OneButtonInnerConfig(), value)];
         return config;
     }
 }

@@ -3,6 +3,7 @@ interface BoxDelegate {
     show(): void;
     hide(): void;
     destroy(): void;
+    remove(): void;
 }
 
 export default BoxDelegate;
