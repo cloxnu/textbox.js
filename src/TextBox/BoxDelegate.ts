@@ -2,7 +2,7 @@ interface BoxDelegate {
     render(): void;
     show(): void;
     hide(): void;
-    destroy(): void;
+    destroy(fn?: Function): void;
     remove(): void;
 }
 
