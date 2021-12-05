@@ -8,8 +8,8 @@ const url = `file://${__dirname}/../test.html`;
 
 // https://github.com/americanexpress/jest-image-snapshot
 const toMatchImageSnapshot = configureToMatchImageSnapshot({
-    failureThreshold: 0,
-    failureThresholdType: 'percent',
+    failureThreshold: 100,
+    failureThresholdType: 'pixel',
 })
 expect.extend({ toMatchImageSnapshot });
 
