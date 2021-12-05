@@ -1,3 +1,4 @@
+import _ from "lodash";
 import { ConfigConverter, InnerConfig, OuterConfig } from "./Config";
 
 class MessageInnerConfig extends InnerConfig {
@@ -26,7 +27,7 @@ class MessageConfigConverter extends ConfigConverter <MessageInnerConfig> {
     }
 
     objectValue(value: OuterConfig): MessageInnerConfig {
-        return {...new MessageInnerConfig(), ...value};
+        return _.merge(new MessageInnerConfig(), value); 
     }
 }
 

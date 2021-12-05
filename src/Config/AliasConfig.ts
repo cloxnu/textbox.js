@@ -1,3 +1,4 @@
+import _ from "lodash";
 import utils from "../utils";
 import { ConfigConverter, InnerConfig, OuterConfig } from "./Config";
 
@@ -14,7 +15,7 @@ class AliasConfigConverter extends ConfigConverter <AliasInnerConfig> {
         return {};
     }
 
-    filter(config: OuterConfig) {
+    filter(config: OuterConfig): OuterConfig {
         /**
          * <------ config
          * alias: { <----- aliasConfig
@@ -34,7 +35,7 @@ class AliasConfigConverter extends ConfigConverter <AliasInnerConfig> {
             }
             const element = config[name];
             delete config[name];
-            const aliasArray: string[] = utils.deepCopy(aliasConfig[name]);
+            const aliasArray: string[] = _.cloneDeep(aliasConfig[name]);
             const lastName = aliasArray.pop();
             if (typeof lastName == 'undefined') {
                 continue;
@@ -42,14 +43,13 @@ class AliasConfigConverter extends ConfigConverter <AliasInnerConfig> {
             let dynamicConfig: OuterConfig = {}
             dynamicConfig[lastName] = element;
             aliasArray.reverse().forEach((key) => {
-                const old = Object.assign({}, dynamicConfig);
+                const old = _.cloneDeep(dynamicConfig);
                 dynamicConfig = {};
                 dynamicConfig[key] = old;
             });
-            newConfig = utils.deepMerge(newConfig, dynamicConfig);
+            newConfig = _.merge(newConfig, dynamicConfig);
         }
-        utils.deepMerge(newConfig, config);
-        utils.deepMerge(config, newConfig);
+        return _.merge(newConfig, config);
     }
 
     /** Convert Method */
@@ -77,7 +77,7 @@ class AliasConfigConverter extends ConfigConverter <AliasInnerConfig> {
         let config = new AliasInnerConfig();
         value.forEach((item) => {
             if (utils.isObject(item)) {
-                Object.assign(config, this.objectValue(item));
+                config = _.merge(config, this.objectValue(item));
             }
         })
         return config;

@@ -7,7 +7,7 @@ function generate(box: BaseBox) {
     return box;
 }
 
-function textbox(config: UserConfig) {
+function textbox(config?: UserConfig) {
     return generate(new TextBox(config));
 }
 

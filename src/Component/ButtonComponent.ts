@@ -43,7 +43,8 @@ class ButtonComponent extends Component {
                 button.classList.add(buttonStyles["submit-btn"]);
                 button.textContent = buttonConfig.text;
                 button.onclick = () => {
-                    if (typeof buttonConfig.callback == 'function' && buttonConfig.callback()) {
+                    if (typeof buttonConfig.callback == 'function' && 
+                        buttonConfig.callback(this.boxDelegate)) {
                         this.boxDelegate?.destroy();
                     }
                 }

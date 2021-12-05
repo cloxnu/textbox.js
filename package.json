@@ -4,6 +4,7 @@
     "publish": "webpack --config webpack.config.js --mode production"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.177",
     "css-loader": "^6.5.1",
     "css-modules-typescript-loader": "^4.0.1",
     "style-loader": "^3.3.1",
@@ -15,6 +16,7 @@
     "webpack-cli": "^4.9.1"
   },
   "dependencies": {
-    "codemirror": "^5.64.0"
+    "codemirror": "^5.64.0",
+    "lodash": "^4.17.21"
   }
 }
