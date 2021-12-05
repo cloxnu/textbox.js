@@ -64,7 +64,7 @@ class BaseBox extends Component implements BoxDelegate {
         }
     }
 
-    destroy(): void {
+    destroy(fn?: Function): void {
         if (!this.exists) {
             return;
         }
@@ -74,6 +74,9 @@ class BaseBox extends Component implements BoxDelegate {
         setTimeout(() => {
             if (!this.exists) {
                 this.element.remove();
+            }
+            if (typeof fn === 'function') {
+                fn();
             }
         }, 300);
     }

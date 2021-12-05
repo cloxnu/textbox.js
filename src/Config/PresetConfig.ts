@@ -17,8 +17,6 @@ class PresetConfigConverter extends ConfigConverter <PresetInnerConfig> {
 
     filter(config: OuterConfig): OuterConfig {
         let presetConfig = this.toInnerConfig() ?? new PresetInnerConfig();
-        console.log(_.cloneDeep(presetConfig));
-        console.log(_.cloneDeep(config));
         return _.merge(presetConfig, config);
     }
 
