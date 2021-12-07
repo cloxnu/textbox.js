@@ -14,10 +14,9 @@ class ConfigConverter <T extends InnerConfig = InnerConfig> {
     name: string;
     value: any;
 
-    constructor(config?: UserConfig, name?: string) {
+    constructor(config: OuterConfig, name?: string) {
         this.name = name ?? this.defaultName;
-        let outerConfig: OuterConfig = config ?? {};
-        this.value = outerConfig.hasOwnProperty(this.name) ? outerConfig[this.name] : this.defaultValue;
+        this.value = config.hasOwnProperty(this.name) ? config[this.name] : this.defaultValue;
     }
 
     get defaultName(): string {

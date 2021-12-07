@@ -1,13 +1,14 @@
 import { ButtonConfigConverter, ButtonInnerConfig } from "../Config/ButtonConfig";
-import { Component, UserConfig } from "./Component";
+import { Component } from "./Component";
 import buttonStyles from '../css/button.css';
 import boxStyles from '../css/textbox.css';
 import BoxDelegate from "../TextBox/BoxDelegate";
+import { OuterConfig } from "../Config/Config";
 
 class ButtonComponent extends Component {
     private config: ButtonInnerConfig;
 
-    constructor(config?: UserConfig, name?: string) {
+    constructor(config: OuterConfig, name?: string) {
         super();
         let configConverter = new ButtonConfigConverter(config, name);
         this.config = configConverter.toInnerConfig() ?? new ButtonInnerConfig();

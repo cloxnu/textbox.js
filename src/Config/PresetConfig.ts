@@ -22,7 +22,11 @@ class PresetConfigConverter extends ConfigConverter <PresetInnerConfig> {
 
     /** Convert Method */
 
-    objectValue(value: Object): PresetInnerConfig {
+    objectValue(value: OuterConfig): PresetInnerConfig {
+        if (value.hasOwnProperty(this.name)) {
+            let configConverter = new PresetConfigConverter(value);
+            value = configConverter.filter(value);
+        }
         return _.defaultsDeep(new PresetInnerConfig(), value);
     }
 
@@ -30,6 +34,10 @@ class PresetConfigConverter extends ConfigConverter <PresetInnerConfig> {
         let config = new PresetInnerConfig();
         value.forEach((item) => {
             if (utils.isObject(item)) {
+                if (item.hasOwnProperty(this.name)) {
+                    let configConverter = new PresetConfigConverter(item);
+                    item = configConverter.filter(item);
+                }
                 config = _.merge(config, item);
             }
         });

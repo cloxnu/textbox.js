@@ -1,4 +1,3 @@
-import { OuterConfig, UserConfig } from "../Config/Config";
 import utils from "../utils";
 
 class Component {
@@ -19,7 +18,5 @@ class Component {
 }
 
 export {
-    UserConfig,
-    OuterConfig,
     Component,
 }
