@@ -1,7 +1,7 @@
 import _ from "lodash";
 import BoxDelegate from "../TextBox/BoxDelegate";
 import utils from "../utils";
-import { ConfigConverter, InnerConfig } from "./Config";
+import { ConfigConverter, InnerConfig, OuterConfig } from "./Config";
 
 class OneButtonInnerConfig {
     text = "OK";
@@ -51,7 +51,7 @@ class ButtonConfigConverter extends ConfigConverter <ButtonInnerConfig> {
         return config;
     }
 
-    objectValue(value: Object): ButtonInnerConfig {
+    objectValue(value: OuterConfig): ButtonInnerConfig {
         let config = new ButtonInnerConfig();
         config.buttons = [_.merge(new OneButtonInnerConfig(), value)];
         return config;

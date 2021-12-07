@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import utils from '../utils';
-import { Component, UserConfig } from '../Component/Component';
+import { Component } from '../Component/Component';
+import { OuterConfig, UserConfig } from '../Config/Config';
 import boxStyles from '../css/textbox.css';
 import BoxDelegate from './BoxDelegate';
 import { PresetConfigConverter } from '../Config/PresetConfig';
@@ -11,25 +12,28 @@ import { BoxConfig } from '../Config/BoxConfig';
 import buttonCancelSvg from '../assets/x.svg';
 
 class BaseBox extends Component implements BoxDelegate {
-    private config: BoxConfig;
+    boxConfig: BoxConfig;
+    outerConfig: OuterConfig;
     exists: boolean = false;
 
     constructor(config?: UserConfig) {
         super();
+        let outerConfig = config ?? {}
         if (typeof config != 'undefined') {
-            config = this.loadPresetConfig(config);
-            config = this.loadAliasConfig(config);
+            outerConfig = this.loadPresetConfig(outerConfig);
+            outerConfig = this.loadAliasConfig(outerConfig);
         }
-        this.config = _.merge(new BoxConfig(), config);
-        this.log('Load config:', config);
+        this.outerConfig = outerConfig;
+        this.boxConfig = _.merge(new BoxConfig(), outerConfig);
+        this.log('Load config:', outerConfig);
     }
 
-    private loadAliasConfig(config: UserConfig): UserConfig {
+    private loadAliasConfig(config: OuterConfig): OuterConfig {
         let configConverter = new AliasConfigConverter(config);
         return configConverter.filter(config);
     }
 
-    private loadPresetConfig(config: UserConfig): UserConfig {
+    private loadPresetConfig(config: OuterConfig): OuterConfig {
         let configConverter = new PresetConfigConverter(config);
         return configConverter.filter(config);
     }
@@ -39,7 +43,7 @@ class BaseBox extends Component implements BoxDelegate {
         if (this.exists) {
             return;
         }
-        this.log('Box render:', this.config.id);
+        this.log('Box render:', this.boxConfig.id);
         this.exists = true;
         document.body.appendChild(this.element);
     }
@@ -68,7 +72,7 @@ class BaseBox extends Component implements BoxDelegate {
         if (!this.exists) {
             return;
         }
-        this.log('Box destory:', this.config.id);
+        this.log('Box destory:', this.boxConfig.id);
         this._hide();
         this.exists = false;
         setTimeout(() => {
@@ -91,7 +95,7 @@ class BaseBox extends Component implements BoxDelegate {
     }
 
     log(...message: any[]) {
-        if (this.config.log) {
+        if (this.boxConfig.log) {
             console.log(`[${this.constructor.name}]`, ...message);
         }
     }
@@ -161,7 +165,7 @@ class BaseBox extends Component implements BoxDelegate {
         if (utils.empty(this._titleElement)) {
             let ele = document.createElement('span');
             ele.classList.add(boxStyles['textbox-title']);
-            ele.textContent = this.config.title;
+            ele.textContent = this.boxConfig.title;
             this._titleElement = ele;
         }
         return this._titleElement!;

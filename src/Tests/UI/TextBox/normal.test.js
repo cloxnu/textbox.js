@@ -34,7 +34,7 @@ describe('TextBox normal', () => {
             function get_opacity() {
                 return getComputedStyle(tb.element).getPropertyValue('opacity');
             }
-            let tb = textbox();
+            tb = textbox();
             // const show_opacity = get_opacity();
             tb.hide();
             const hide_opacity = get_opacity();

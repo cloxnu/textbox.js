@@ -1,8 +1,9 @@
 import utils from "../utils";
 import BaseBox from "./BaseBox";
-import { Component, UserConfig } from "../Component/Component";
+import { Component } from "../Component/Component";
 import { MessageComponent } from "../Component/MessageComponent";
 import { ButtonComponent } from "../Component/ButtonComponent";
+import { UserConfig } from "../Config/Config";
 
 class TextBox extends BaseBox {
     messageComponent: MessageComponent;
@@ -10,8 +11,8 @@ class TextBox extends BaseBox {
 
     constructor(config?: UserConfig) {
         super(config);
-        this.messageComponent = new MessageComponent(config);
-        this.buttonComponent = new ButtonComponent(config);
+        this.messageComponent = new MessageComponent(this.outerConfig);
+        this.buttonComponent = new ButtonComponent(this.outerConfig);
         this.buttonComponent.boxDelegate = this;
     }
 
