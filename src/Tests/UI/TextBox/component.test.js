@@ -21,7 +21,7 @@ describe('TextBox message component', () => {
                 message: 'World',
             });
             return {
-                title: tb.titleElement.innerText,
+                title: tb.titleComponent.element.innerText,
                 message: tb.messageComponent.element.innerText,
             };
         });
@@ -41,7 +41,7 @@ describe('TextBox button component', () => {
             tb.buttonComponent.buttons[0].id = "testBtn";
             await sleep(800);
             return {
-                button: tb.buttonComponent.buttons[0].innerText,
+                button: tb.buttonGroupComponent.buttons[0].element.innerText,
             }
         });
 
@@ -68,7 +68,7 @@ describe('TextBox button component', () => {
                     }
                 }
             });
-            tb.buttonComponent.buttons[0].id = "testBtn";
+            tb.buttonGroupComponent.buttons[0].element.id = "testBtn";
             await sleep(800);
         });
 

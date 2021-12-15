@@ -1,20 +1,18 @@
-import { MessageConfigConverter, MessageInnerConfig } from "../Config/MessageConfig";
-import { Component } from "./Component";
-import boxStyles from '../css/textbox.css';
+import { MessageConfigManager, MessageInnerConfig } from "../Config/MessageConfig";
+import style from '../assets/css/component/message.css';
 import { OuterConfig } from "../Config/Config";
+import _ from "lodash";
+import { ManageableComponent } from "./ManageableComponent";
 
-class MessageComponent extends Component {
-    private config: MessageInnerConfig;
+class MessageComponent extends ManageableComponent <MessageConfigManager, MessageInnerConfig> {
 
-    constructor(config: OuterConfig, name?: string) {
-        super();
-        let configConverter = new MessageConfigConverter(config, name);
-        this.config = configConverter.toInnerConfig() ?? new MessageInnerConfig();
+    constructor(config: OuterConfig, name?: string, defaultInnerConfig?: MessageInnerConfig) {
+        super(new MessageConfigManager(config, name, defaultInnerConfig));
     }
 
     protected buildElement(): HTMLElement {
         let ele = document.createElement('span');
-        ele.classList.add(boxStyles["textbox-message"]);
+        ele.classList.add(style["component-message"]);
         ele.textContent = this.config.content;
         return ele;
     }

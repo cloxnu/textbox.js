@@ -1,9 +1,10 @@
 import utils from "../utils";
+import { ComponentConfig } from "./ComponentConfig";
 
-class BoxConfig {
+class BoxConfig extends ComponentConfig {
     id: string = utils.generate_id();
-    title: string = "";
     log: boolean = false;
+    id_attribute: boolean = false;
 }
 
 export {

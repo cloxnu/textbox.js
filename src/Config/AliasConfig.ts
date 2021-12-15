@@ -1,18 +1,19 @@
 import _ from "lodash";
 import utils from "../utils";
-import { ConfigConverter, InnerConfig, OuterConfig } from "./Config";
+import { ConfigConverter, ConfigManager, InnerConfig, OuterConfig } from "./Config";
 
 class AliasInnerConfig extends InnerConfig {
     [name: string]: string[];
 }
 
-class AliasConfigConverter extends ConfigConverter <AliasInnerConfig> {
+class AliasConfigManager extends ConfigManager <AliasInnerConfig> {
     get defaultName(): string {
-        return 'alias';
+        return "alias";
     }
 
-    get defaultValue(): OuterConfig {
-        return {};
+    protected toInnerConfig(value: any, defaultInnerConfig?: AliasInnerConfig): AliasInnerConfig {
+        let configConverter = new AliasConfigConverter(value, defaultInnerConfig);
+        return configConverter.toInnerConfig() ?? new AliasInnerConfig();
     }
 
     filter(config: OuterConfig): OuterConfig {
@@ -27,7 +28,7 @@ class AliasConfigConverter extends ConfigConverter <AliasInnerConfig> {
          *    ^         ^
          *   name      element
          */
-        let aliasConfig = this.toInnerConfig() ?? new AliasInnerConfig();
+        let aliasConfig = this.innerConfig;
         let newConfig: OuterConfig = {};
         for (const name in aliasConfig) {
             if (!Object.prototype.hasOwnProperty.call(config, name)) {
@@ -50,6 +51,12 @@ class AliasConfigConverter extends ConfigConverter <AliasInnerConfig> {
             newConfig = _.merge(newConfig, dynamicConfig);
         }
         return _.merge(newConfig, config);
+    }
+}
+
+class AliasConfigConverter extends ConfigConverter <AliasInnerConfig> {
+    get defaultValue(): OuterConfig {
+        return {};
     }
 
     /** Convert Method */
@@ -86,5 +93,6 @@ class AliasConfigConverter extends ConfigConverter <AliasInnerConfig> {
 
 export {
     AliasInnerConfig,
+    AliasConfigManager,
     AliasConfigConverter,
 }

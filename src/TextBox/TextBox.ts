@@ -2,18 +2,28 @@ import utils from "../utils";
 import BaseBox from "./BaseBox";
 import { Component } from "../Component/Component";
 import { MessageComponent } from "../Component/MessageComponent";
-import { ButtonComponent } from "../Component/ButtonComponent";
+import { ButtonGroupComponent } from "../Component/ButtonGroupComponent";
 import { UserConfig } from "../Config/Config";
+import _ from "lodash";
+import TextBoxPreset from "../Preset/TextBoxPreset";
 
 class TextBox extends BaseBox {
     messageComponent: MessageComponent;
-    buttonComponent: ButtonComponent;
+    buttonGroupComponent: ButtonGroupComponent;
 
     constructor(config?: UserConfig) {
         super(config);
+        _.merge(this.outerConfig, TextBoxPreset.preset);
+        console.log(this.outerConfig);
         this.messageComponent = new MessageComponent(this.outerConfig);
-        this.buttonComponent = new ButtonComponent(this.outerConfig);
-        this.buttonComponent.boxDelegate = this;
+        this.buttonGroupComponent = new ButtonGroupComponent(this.outerConfig);
+        this.buttonGroupComponent.boxDelegate = this;
+    }
+
+    update(config?: UserConfig): void {
+        super.update(config);
+        this.messageComponent.update(this.outerConfig);
+        this.buttonGroupComponent.update(this.outerConfig);
     }
 
     get content(): Component | undefined {
@@ -24,13 +34,13 @@ class TextBox extends BaseBox {
         if (utils.empty(this.content)) {
             return [
                 this.messageComponent, 
-                this.buttonComponent
+                this.buttonGroupComponent
             ];
         } else {
             return [
                 this.messageComponent,
                 this.content!,
-                this.buttonComponent,
+                this.buttonGroupComponent,
             ];
         }
     }

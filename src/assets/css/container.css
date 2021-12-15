@@ -1,0 +1,9 @@
+.container.justified {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    background-color: var(--clear-gray);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

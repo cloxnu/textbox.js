@@ -1,15 +1,23 @@
 import _ from "lodash";
-import { ConfigConverter, InnerConfig, OuterConfig } from "./Config";
+import { ComponentConfig, ComponentConfigManager } from "./ComponentConfig";
+import { ConfigConverter, OuterConfig } from "./Config";
 
-class MessageInnerConfig extends InnerConfig {
+class MessageInnerConfig extends ComponentConfig {
     content = "";
 }
 
-class MessageConfigConverter extends ConfigConverter <MessageInnerConfig> {
+class MessageConfigManager extends ComponentConfigManager <MessageInnerConfig> {
     get defaultName(): string {
         return "message";
     }
-    
+
+    protected toInnerConfig(value: any, defaultInnerConfig?: MessageInnerConfig): MessageInnerConfig {
+        let configConverter = new MessageConfigConverter(value, defaultInnerConfig);
+        return configConverter.toInnerConfig() ?? new MessageInnerConfig();
+    }
+}
+
+class MessageConfigConverter extends ConfigConverter <MessageInnerConfig> {
     get defaultValue(): string {
         return "";
     }
@@ -17,9 +25,9 @@ class MessageConfigConverter extends ConfigConverter <MessageInnerConfig> {
     /** Convert Method */
 
     stringValue(value: string): MessageInnerConfig {
-        let config = new MessageInnerConfig();
-        config.content = value;
-        return config;
+        return this.objectValue({
+            content: value,
+        });
     }
 
     numberValue(value: number): MessageInnerConfig {
@@ -27,12 +35,13 @@ class MessageConfigConverter extends ConfigConverter <MessageInnerConfig> {
     }
 
     objectValue(value: OuterConfig): MessageInnerConfig {
-        return _.merge(new MessageInnerConfig(), value); 
+        return _.merge((this.defaultInnerConfig ?? new MessageInnerConfig()), value); 
     }
 }
 
 export {
     MessageInnerConfig,
+    MessageConfigManager,
     MessageConfigConverter,
 }
 

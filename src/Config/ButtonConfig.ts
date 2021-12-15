@@ -1,65 +1,49 @@
 import _ from "lodash";
 import BoxDelegate from "../TextBox/BoxDelegate";
-import utils from "../utils";
-import { ConfigConverter, InnerConfig, OuterConfig } from "./Config";
+import { ConfigConverter, OuterConfig } from "./Config";
+import { ComponentConfig, ComponentConfigManager } from "./ComponentConfig";
 
-class OneButtonInnerConfig {
+class ButtonInnerConfig extends ComponentConfig {
     text = "OK";
-    callback = (_?: BoxDelegate): boolean => { return true; }
+    callback = (_?: BoxDelegate): boolean => { return true; };
+    style = "default";
 }
 
-class ButtonInnerConfig extends InnerConfig {
-    buttons: OneButtonInnerConfig[] = [];
-}
-
-class ButtonConfigConverter extends ConfigConverter <ButtonInnerConfig> {
+class ButtonConfigManager extends ComponentConfigManager <ButtonInnerConfig> {
     get defaultName(): string {
         return "button";
     }
 
+    protected toInnerConfig(value: any, defaultInnerConfig?: ButtonInnerConfig): ButtonInnerConfig {
+        let configConverter = new ButtonConfigConverter(value, defaultInnerConfig);
+        return configConverter.toInnerConfig() ?? new ButtonInnerConfig();
+    }
+}
+
+class ButtonConfigConverter extends ConfigConverter <ButtonInnerConfig> {
     get defaultValue(): string {
         return "OK";
     }
 
     /** Convert Method */
 
-    stringValue(value: string): ButtonInnerConfig {
-        let config = new ButtonInnerConfig();
-        let oneConfig = new OneButtonInnerConfig();
-        oneConfig.text = value;
-
-        config.buttons = [oneConfig]; 
-        return config;
+    stringValue(value: string): ButtonInnerConfig | undefined {
+        return this.objectValue({
+            text: value,
+        });
     }
 
-    numberValue(value: number): ButtonInnerConfig {
+    numberValue(value: number): ButtonInnerConfig | undefined {
         return this.stringValue(value.toString());
     }
 
-    arrayValue(value: Array<any>): ButtonInnerConfig {
-        let config = new ButtonInnerConfig();
-        value.forEach((item: string | OneButtonInnerConfig) => {
-            let oneConfig = new OneButtonInnerConfig();
-            if (typeof item == 'string') {
-                oneConfig.text = item;
-            }
-            else if (utils.isObject(item)) {
-                oneConfig = _.merge(oneConfig, item);
-            }
-            config.buttons.push(oneConfig);
-        })
-        return config;
-    }
-
-    objectValue(value: OuterConfig): ButtonInnerConfig {
-        let config = new ButtonInnerConfig();
-        config.buttons = [_.merge(new OneButtonInnerConfig(), value)];
-        return config;
+    objectValue(value: OuterConfig): ButtonInnerConfig | undefined {
+        return _.merge((this.defaultInnerConfig ?? new ButtonInnerConfig()), value);
     }
 }
 
 export {
-    OneButtonInnerConfig,
     ButtonInnerConfig,
+    ButtonConfigManager,
     ButtonConfigConverter,
 }

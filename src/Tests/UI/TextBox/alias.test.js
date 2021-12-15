@@ -26,7 +26,7 @@ describe('TextBox alias config', () => {
             });
 
             return {
-                title: tb.titleElement.innerText,
+                title: tb.titleComponent.element.innerText,
                 message: tb.messageComponent.element.innerText,
             };
         });
@@ -48,7 +48,7 @@ describe('TextBox alias config', () => {
             });
 
             return {
-                title: tb.titleElement.innerText,
+                title: tb.titleComponent.element.innerText,
                 message: tb.messageComponent.element.innerText,
             };
         });
@@ -73,7 +73,7 @@ describe('TextBox alias config', () => {
             await sleep(800);
 
             return {
-                btn_text: tb.buttonComponent.buttons[0].innerText,
+                btn_text: tb.buttonGroupComponent.buttons[0].element.innerText,
             };
         });
 
