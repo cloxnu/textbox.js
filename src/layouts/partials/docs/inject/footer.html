@@ -1,0 +1,18 @@
+<script src="/textbox.js"></script>
+
+<script>
+    document.querySelectorAll('.try-btn').forEach(btn => {
+        element = btn.previousElementSibling;
+        while (element) {
+            const codeElement = element.querySelector('code.language-javascript');
+            if (codeElement) {
+                const code = codeElement.innerText;
+                btn.onclick = () => {
+                    eval(code);
+                };
+                break;
+            }
+            element = element.previousElementSibling;
+        }
+    })
+</script>

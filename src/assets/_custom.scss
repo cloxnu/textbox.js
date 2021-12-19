@@ -1,0 +1,137 @@
+/* You can add custom styles here. */
+
+// @import "plugins/numbered";
+// @import "plugins/scrollbars";
+
+/* roboto-300italic - latin */
+@font-face {
+  font-family: "Recursive";
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: local("Recursive"), url("fonts/Recursive.woff2") format("woff2");
+}
+/* roboto-regular - latin */
+@font-face {
+  font-family: "Recursive";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Recursive"), url("fonts/Recursive.woff2") format("woff2"); /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+/* roboto-700 - latin */
+@font-face {
+  font-family: "Recursive";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local("Recursive"), url("fonts/Recursive.woff2") format("woff2"); /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+
+/* roboto-mono-regular - latin */
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("JetBrains Mono"),
+    url("fonts/JetBrainsMono-Regular.woff2") format("woff2"); /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+
+code {
+  font-family: "JetBrains Mono", monospace;
+}
+
+// FROM https://github.com/auth0/kbd
+
+kbd {
+  font-family: "JetBrains Mono", monospace;
+  // font-family: Consolas, "Lucida Console", monospace;
+  display: inline-block;
+  border-radius: 3px;
+  padding: 0px 4px;
+  box-shadow: 1px 1px 1px #777;
+  margin: 2px;
+  //font-size: small;
+  vertical-align: text-bottom;
+  background: #eee;
+  font-weight: 500;
+  color: #555;
+  cursor: pointer;
+  //font-variant: small-caps;
+  font-weight: 600;
+
+  /* This two work */
+  /* letter-spacing: 0.5px; */
+  letter-spacing: 1px;
+
+  /* Prevent selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+kbd:hover,
+kbd:hover * {
+  color: black;
+  /* box-shadow: 1px 1px 1px #333; */
+}
+kbd:active,
+kbd:active * {
+  color: black;
+  box-shadow: 1px 1px 0px #ddd inset;
+}
+
+kbd kbd {
+  padding: 0px;
+  margin: 0 1px;
+  box-shadow: 0px 0px 0px black;
+  vertical-align: baseline;
+  background: none;
+}
+
+kbd kbd:hover {
+  box-shadow: 0px 0px 0px black;
+}
+
+kbd:active kbd {
+  box-shadow: 0px 0px 0px black;
+  background: none;
+}
+
+/* Deep blue */
+kbd.deep-blue,
+.deep-blue kbd {
+  background: steelblue;
+  color: #eee;
+}
+
+kbd.deep-blue:hover,
+kbd.deep-blue:hover *,
+.deep-blue kbd:hover {
+  color: white;
+}
+
+/* Dark apple */
+kbd.dark-apple,
+.dark-apple kbd {
+  background: black;
+  color: #ddd;
+}
+
+kbd.dark-apple:hover,
+kbd.dark-apple:hover *,
+.dark-apple kbd:hover {
+  color: white;
+}
+
+/* Type writer */
+kbd.type-writer,
+.type-writer kbd {
+  border-radius: 10px;
+  background: #333;
+  color: white;
+}

@@ -1,0 +1,11 @@
+baseURL: https://textbox.clox.nu/
+languageCode: en-us
+title: textbox.js
+theme: 'hugo-book'
+
+publishdir: ../docs
+
+params:
+  BookTheme: auto
+  BookToC: true
+  BookMenuBundle: '/menu'

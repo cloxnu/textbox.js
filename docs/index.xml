@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>textbox.js</title>
+    <link>https://textbox.clox.nu/</link>
+    <description>Recent content on textbox.js</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 19 Dec 2021 20:06:48 +0800</lastBuildDate><atom:link href="https://textbox.clox.nu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Getting Started</title>
+      <link>https://textbox.clox.nu/getting-started/</link>
+      <pubDate>Sun, 19 Dec 2021 20:17:04 +0800</pubDate>
+      
+      <guid>https://textbox.clox.nu/getting-started/</guid>
+      <description>Getting Started #  Welcome again, this page will introduce the simplest usage of textbox and hopefully it will bring you the desire to continue exploring or to contribute to this project.
+For now, textbox is still in beta, but you can still copy the textbox.js code here.  The simplest usage #  textbox();  TRY  If everything works, you will see the following result after pressing TRY. If not, please contact us.</description>
+    </item>
+    
+    <item>
+      <title>Menu</title>
+      <link>https://textbox.clox.nu/menu/</link>
+      <pubDate>Sun, 19 Dec 2021 20:15:41 +0800</pubDate>
+      
+      <guid>https://textbox.clox.nu/menu/</guid>
+      <description> Getting Started  </description>
+    </item>
+    
+    <item>
+      <title>TextBox</title>
+      <link>https://textbox.clox.nu/textbox/</link>
+      <pubDate>Sun, 19 Dec 2021 20:12:39 +0800</pubDate>
+      
+      <guid>https://textbox.clox.nu/textbox/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
