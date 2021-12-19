@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Title, Message and Buttons #  As a powerful ⚡️ UI component that can display a variety of different styles, we definitely don&rsquo;t want to just use the default configuration, so here we start with three basic configurations: title, message and buttons.
+Title #  Let&rsquo;s start with the title.
+textbox({ title: &#39;Hello&#39;, });  TRY  Did you see it? The title &lsquo;Hello&rsquo; appears in the title bar, let&rsquo;s turn it to red:">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Title, Message and Buttons" />
+<meta property="og:description" content="Title, Message and Buttons #  As a powerful ⚡️ UI component that can display a variety of different styles, we definitely don&rsquo;t want to just use the default configuration, so here we start with three basic configurations: title, message and buttons.
+Title #  Let&rsquo;s start with the title.
+textbox({ title: &#39;Hello&#39;, });  TRY  Did you see it? The title &lsquo;Hello&rsquo; appears in the title bar, let&rsquo;s turn it to red:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://textbox.clox.nu/docs/configuration/title-message-and-buttons/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2021-12-20T00:19:25+08:00" />
+<meta property="article:modified_time" content="2021-12-20T00:19:25+08:00" />
+
+<title>Title, Message and Buttons | textbox.js</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.54bee09333bdf3655d2a34963079a2655fb4f4a3c0147ccb5bd62b368adee48e.css" integrity="sha256-VL7gkzO982VdKjSWMHmiZV&#43;09KPAFHzLW9YrNore5I4=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.e928d08dc9507211c8adbdd7c09d5b9a05994e6677a969f716ca0cc4c381a7ac.js" integrity="sha256-6SjQjclQchHIrb3XwJ1bmgWZTmZ3qWn3FsoMxMOBp6w=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>textbox.js</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://textbox.clox.nu/docs/getting-started/" class="">Getting Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://textbox.clox.nu/docs/configuration/" class="">Configuration</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://textbox.clox.nu/docs/configuration/title-message-and-buttons/" class=" active">Title, Message and Buttons</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Title, Message and Buttons</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#title">Title</a></li>
+    <li><a href="#message">Message</a></li>
+    <li><a href="#buttons">Buttons</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="title-message-and-buttons">
+  Title, Message and Buttons
+  <a class="anchor" href="#title-message-and-buttons">#</a>
+</h1>
+<p>As a powerful ⚡️ UI component that can display a variety of different styles, we definitely don&rsquo;t want to just use the default configuration, so here we start with three basic configurations: title, message and buttons.</p>
+<h2 id="title">
+  Title
+  <a class="anchor" href="#title">#</a>
+</h2>
+<p>Let&rsquo;s start with the title.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">textbox</span>({
+    <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Hello&#39;</span>,
+});
+</code></pre></div>
+
+
+
+<a   class="book-btn try-btn">
+  TRY
+</a>
+
+<p>Did you see it? The title &lsquo;Hello&rsquo; appears in the title bar, let&rsquo;s turn it to red:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">textbox</span>({
+    <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">content</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Hello&#39;</span>,
+        <span style="color:#a6e22e">color</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;red&#39;</span>,
+    },
+});
+</code></pre></div>
+
+
+
+<a   class="book-btn try-btn">
+  TRY
+</a>
+
+<h2 id="message">
+  Message
+  <a class="anchor" href="#message">#</a>
+</h2>
+<p>Like title, message has the same properties, so let&rsquo;s put together &lsquo;Hello World&rsquo;.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">textbox</span>({
+    <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Hello&#39;</span>,
+    <span style="color:#a6e22e">message</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;World&#39;</span>,
+});
+</code></pre></div>
+
+
+
+<a   class="book-btn try-btn">
+  TRY
+</a>
+
+<h2 id="buttons">
+  Buttons
+  <a class="anchor" href="#buttons">#</a>
+</h2>
+<p>Let&rsquo;s have some interactivity with the textbox. Change the default &lsquo;OK&rsquo; button, we want to click it and then pop up a new textbox.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">textbox</span>({
+    <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Hello&#39;</span>,
+    <span style="color:#a6e22e">message</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;World&#39;</span>,
+    <span style="color:#a6e22e">button</span><span style="color:#f92672">:</span> {
+        <span style="color:#a6e22e">text</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;New TextBox&#39;</span>,
+        <span style="color:#a6e22e">callback</span>() {
+            <span style="color:#a6e22e">textbox</span>();
+        },
+    },
+});
+</code></pre></div>
+
+
+
+<a   class="book-btn try-btn">
+  TRY
+</a>
+
+<p>Here you can have a second button to finish the cancel task.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">textbox</span>({
+    <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Hello&#39;</span>,
+    <span style="color:#a6e22e">message</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;World&#39;</span>,
+    <span style="color:#a6e22e">button</span><span style="color:#f92672">:</span> [{
+        <span style="color:#a6e22e">text</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;New TextBox&#39;</span>,
+        <span style="color:#a6e22e">callback</span>() {
+            <span style="color:#a6e22e">textbox</span>();
+        },
+    }, <span style="color:#e6db74">&#39;Cancel&#39;</span>],
+});
+</code></pre></div>
+
+
+
+<a   class="book-btn try-btn">
+  TRY
+</a>
+
+<p>Let&rsquo;s have an advanced interaction. Can we make the current textbox disappear and then pop up a textbox with the same configuration after clicking this button?</p>
+<blockquote>
+<p>If we want to make the textbox disappear after clicking the button, try <code>return true</code> in the callback.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">generate</span>() {
+    <span style="color:#a6e22e">textbox</span>({
+        <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Hello&#39;</span>,
+        <span style="color:#a6e22e">message</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;World&#39;</span>,
+        <span style="color:#a6e22e">button</span><span style="color:#f92672">:</span> {
+            <span style="color:#a6e22e">text</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Generate&#39;</span>,
+            <span style="color:#a6e22e">callback</span>() {
+                <span style="color:#a6e22e">generate</span>();
+                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+            },
+        },
+    });
+};
+<span style="color:#a6e22e">generate</span>();
+</code></pre></div>
+
+
+
+<a   class="book-btn try-btn">
+  TRY
+</a>
+
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+
+
+ 
+        <script src="/textbox.js"></script>
+
+<script>
+    document.querySelectorAll('.try-btn').forEach(btn => {
+        element = btn.previousElementSibling;
+        while (element) {
+            const codeElement = element.querySelector('code.language-javascript');
+            if (codeElement) {
+                const code = codeElement.innerText;
+                btn.onclick = () => {
+                    eval(code);
+                };
+                break;
+            }
+            element = element.previousElementSibling;
+        }
+    })
+</script>
+
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#title">Title</a></li>
+    <li><a href="#message">Message</a></li>
+    <li><a href="#buttons">Buttons</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,6 +1,7 @@
 ---
 title: "Getting Started"
 date: 2021-12-19T20:17:04+08:00
+weight: 1
 draft: true
 ---
 

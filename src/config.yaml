@@ -8,4 +8,3 @@ publishdir: ../docs
 params:
   BookTheme: auto
   BookToC: true
-  BookMenuBundle: '/menu'

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Configuration on textbox.js</title>
+    <link>https://textbox.clox.nu/docs/configuration/</link>
+    <description>Recent content in Configuration on textbox.js</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 20 Dec 2021 00:15:25 +0800</lastBuildDate><atom:link href="https://textbox.clox.nu/docs/configuration/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Title, Message and Buttons</title>
+      <link>https://textbox.clox.nu/docs/configuration/title-message-and-buttons/</link>
+      <pubDate>Mon, 20 Dec 2021 00:19:25 +0800</pubDate>
+      
+      <guid>https://textbox.clox.nu/docs/configuration/title-message-and-buttons/</guid>
+      <description>Title, Message and Buttons #  As a powerful ⚡️ UI component that can display a variety of different styles, we definitely don&amp;rsquo;t want to just use the default configuration, so here we start with three basic configurations: title, message and buttons.
+Title #  Let&amp;rsquo;s start with the title.
+textbox({ title: &amp;#39;Hello&amp;#39;, });  TRY  Did you see it? The title &amp;lsquo;Hello&amp;rsquo; appears in the title bar, let&amp;rsquo;s turn it to red:</description>
+    </item>
+    
+  </channel>
+</rss>
