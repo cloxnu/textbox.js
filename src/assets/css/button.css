@@ -24,3 +24,15 @@
     background-color: var(--foreground);
     border: 2px solid var(--foreground);
 }
+
+
+.img-btn {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}

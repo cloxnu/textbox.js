@@ -1,9 +1,13 @@
 import BaseBox from "./TextBox/BaseBox";
 import TextBox from "./TextBox/TextBox";
 
-import './css/main.css';
-import './css/textbox.css';
-import './css/button.css';
+import './assets/css/main.css';
+import './assets/css/textbox.css';
+import './assets/css/button.css';
+import './assets/css/container.css';
+import './assets/css/component/message.css';
+import './assets/css/component/button_group.css';
+
 import * as shortcut from "./shortcut";
 
 

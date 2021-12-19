@@ -1,6 +1,11 @@
+import { ComponentConfig, ComponentConfigManager } from "../Config/ComponentConfig";
+import { OuterConfig } from "../Config/Config";
 import utils from "../utils";
 
-class Component {
+abstract class Component {
+
+    abstract config: ComponentConfig;
+
     /** Element */
 
     private _element?: HTMLElement;
@@ -8,13 +13,21 @@ class Component {
     public get element(): HTMLElement {
         if (utils.empty(this._element)) {
             this._element = this.buildElement();
+            this.config.setIn(this._element);
         }
         return this._element!;
     }
 
-    protected buildElement(): HTMLElement {
-        throw new Error("buildElement method must be implemented!");
+    public updateElement(): void {
+        if (!utils.empty(this._element)) {
+            let ele = this.buildElement();
+            this.config.setIn(ele);
+            this.element.replaceWith(ele);
+            this._element = ele;
+        }
     }
+
+    protected abstract buildElement(): HTMLElement;
 }
 
 export {

@@ -25,7 +25,7 @@ describe('TextBox preset config', () => {
             });
 
             return {
-                title: tb.titleElement.innerText,
+                title: tb.titleComponent.element.innerText,
                 message: tb.messageComponent.element.innerText,
             };
         });
@@ -49,9 +49,9 @@ describe('TextBox preset config', () => {
             });
 
             return {
-                title: tb.titleElement.innerText,
+                title: tb.titleComponent.element.innerText,
                 message: tb.messageComponent.element.innerText,
-                button: tb.buttonComponent.buttons[0].innerText,
+                button: tb.buttonGroupComponent.buttons[0].element.innerText,
             };
         });
 
@@ -80,9 +80,9 @@ describe('TextBox preset config', () => {
             });
 
             return {
-                title: tb.titleElement.innerText,
+                title: tb.titleComponent.element.innerText,
                 message: tb.messageComponent.element.innerText,
-                button: tb.buttonComponent.buttons[0].innerText,
+                button: tb.buttonGroupComponent.buttons[0].element.innerText,
             };
         });
 
@@ -115,9 +115,9 @@ describe('TextBox preset config', () => {
             });
 
             return {
-                title: tb.titleElement.innerText,
+                title: tb.titleComponent.element.innerText,
                 message: tb.messageComponent.element.innerText,
-                button: tb.buttonComponent.buttons[0].innerText,
+                button: tb.buttonGroupComponent.buttons[0].element.innerText,
             };
         });
 
@@ -145,9 +145,9 @@ describe('TextBox preset config', () => {
             });
 
             return {
-                title: tb.titleElement.innerText,
+                title: tb.titleComponent.element.innerText,
                 message: tb.messageComponent.element.innerText,
-                button: tb.buttonComponent.buttons[0].innerText,
+                button: tb.buttonGroupComponent.buttons[0].element.innerText,
             };
         });
 

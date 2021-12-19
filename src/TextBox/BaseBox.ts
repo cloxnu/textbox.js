@@ -1,41 +1,72 @@
+//@ts-ignore
+import buttonCancelSvg from '../assets/svg/x.svg';
+
 import _ from 'lodash';
 import utils from '../utils';
 import { Component } from '../Component/Component';
 import { OuterConfig, UserConfig } from '../Config/Config';
-import boxStyles from '../css/textbox.css';
+import boxStyle from '../assets/css/textbox.css';
+import messageComponentStyle from '../assets/css/component/message.css';
 import BoxDelegate from './BoxDelegate';
-import { PresetConfigConverter } from '../Config/PresetConfig';
-import { AliasConfigConverter } from '../Config/AliasConfig';
+import { PresetConfigConverter, PresetConfigManager } from '../Config/PresetConfig';
+import { AliasConfigConverter, AliasConfigManager, AliasInnerConfig } from '../Config/AliasConfig';
 import { BoxConfig } from '../Config/BoxConfig';
-
-//@ts-ignore
-import buttonCancelSvg from '../assets/x.svg';
+import { MessageComponent } from '../Component/MessageComponent';
+import { ButtonComponent } from '../Component/ButtonComponent';
+import { ButtonInnerConfig } from '../Config/ButtonConfig';
+import { MessageInnerConfig } from '../Config/MessageConfig';
+import { FilterConfig } from '../Config/FilterConfig';
 
 class BaseBox extends Component implements BoxDelegate {
-    boxConfig: BoxConfig;
+    config: BoxConfig;
     outerConfig: OuterConfig;
+    storedAliasConfig: FilterConfig = {};
     exists: boolean = false;
 
     constructor(config?: UserConfig) {
         super();
+        this.outerConfig = this.loadConfig(config);
+        this.config = _.merge(new BoxConfig(), this.outerConfig);
+        this.log('Load config:', this.outerConfig);
+    }
+
+    private loadConfig(config?: UserConfig): OuterConfig {
         let outerConfig = config ?? {}
         if (typeof config != 'undefined') {
             outerConfig = this.loadPresetConfig(outerConfig);
             outerConfig = this.loadAliasConfig(outerConfig);
         }
-        this.outerConfig = outerConfig;
-        this.boxConfig = _.merge(new BoxConfig(), outerConfig);
-        this.log('Load config:', outerConfig);
-    }
-
-    private loadAliasConfig(config: OuterConfig): OuterConfig {
-        let configConverter = new AliasConfigConverter(config);
-        return configConverter.filter(config);
+        return outerConfig;
     }
 
     private loadPresetConfig(config: OuterConfig): OuterConfig {
-        let configConverter = new PresetConfigConverter(config);
-        return configConverter.filter(config);
+        let configManager = new PresetConfigManager(config);
+        return configManager.filter(config);
+    }
+
+    private loadAliasConfig(config: OuterConfig): OuterConfig {
+        let configManager = new AliasConfigManager(config);
+        this.storedAliasConfig = configManager.storedAliasConfig;
+        return configManager.filter(config);
+    }
+
+    update(config?: UserConfig): void {
+        config = _.merge({}, this.storedAliasConfig, config);
+        config = this.loadConfig(config);
+        _.merge(this.outerConfig, config);
+
+        this.titleComponent.update(this.outerConfig);
+        this.cancelButton.update(this.outerConfig);
+        
+        this.log('Updated config:', this.outerConfig);
+
+        // Object.keys(new BoxConfig()).forEach(key => {
+        //     console.log(key);
+        //     if (config?.hasOwnProperty(key)) {
+        //         _.merge(this.boxConfig, this.outerConfig);
+        //         this.updateElement();
+        //     }
+        // });
     }
 
     render(): void {
@@ -43,17 +74,17 @@ class BaseBox extends Component implements BoxDelegate {
         if (this.exists) {
             return;
         }
-        this.log('Box render:', this.boxConfig.id);
+        this.log('Box render:', this.config.id);
         this.exists = true;
         document.body.appendChild(this.element);
     }
 
     private _show(): void {
-        this.element.classList.remove(boxStyles.invisible);
+        this.element.classList.remove(boxStyle.invisible);
     }
 
     private _hide(): void {
-        this.element.classList.add(boxStyles.invisible);
+        this.element.classList.add(boxStyle.invisible);
     }
 
     show(): void {
@@ -72,7 +103,7 @@ class BaseBox extends Component implements BoxDelegate {
         if (!this.exists) {
             return;
         }
-        this.log('Box destory:', this.boxConfig.id);
+        this.log('Box destory:', this.config.id);
         this._hide();
         this.exists = false;
         setTimeout(() => {
@@ -95,7 +126,7 @@ class BaseBox extends Component implements BoxDelegate {
     }
 
     log(...message: any[]) {
-        if (this.boxConfig.log) {
+        if (this.config.log) {
             console.log(`[${this.constructor.name}]`, ...message);
         }
     }
@@ -106,12 +137,12 @@ class BaseBox extends Component implements BoxDelegate {
     private _boxElement?: HTMLDivElement;
     private _titleBar?: HTMLDivElement;
     private _boxContent?: HTMLDivElement;
-    private _titleElement?: HTMLSpanElement;
-    private _cancelButton?: HTMLButtonElement;
+    private _titleComponent?: MessageComponent;
+    private _cancelButton?: ButtonComponent;
 
     protected buildElement(): HTMLElement {
         let div = document.createElement('div');
-        div.classList.add(boxStyles['textbox-wrapper']);
+        div.classList.add(boxStyle['textbox-wrapper']);
         div.appendChild(this.backdrop);
         div.appendChild(this.boxElement);
         return div;
@@ -120,7 +151,7 @@ class BaseBox extends Component implements BoxDelegate {
     public get backdrop(): HTMLDivElement {
         if (utils.empty(this._backdrop)) {
             let ele = document.createElement('div');
-            ele.classList.add(boxStyles['textbox-backdrop']);
+            ele.classList.add(boxStyle['textbox-backdrop']);
             this._backdrop = ele;
         }
         return this._backdrop!;
@@ -129,7 +160,7 @@ class BaseBox extends Component implements BoxDelegate {
     public get boxElement(): HTMLDivElement {
         if (utils.empty(this._boxElement)) {
             let ele = document.createElement('div');
-            ele.classList.add(boxStyles.textbox);
+            ele.classList.add(boxStyle.textbox);
             ele.appendChild(this.titleBar);
             ele.appendChild(this.boxContent);
             this._boxElement = ele;
@@ -140,9 +171,9 @@ class BaseBox extends Component implements BoxDelegate {
     public get titleBar(): HTMLDivElement {
         if (utils.empty(this._titleBar)) {
             let ele = document.createElement('div');
-            ele.classList.add(boxStyles['textbox-title-bar']);
-            ele.appendChild(this.titleElement);
-            ele.appendChild(this.cancelButton);
+            ele.classList.add(boxStyle['textbox-title-bar']);
+            ele.appendChild(this.titleComponent.element);
+            ele.appendChild(this.cancelButton.element);
             this._titleBar = ele;
         }
         return this._titleBar!;
@@ -151,7 +182,7 @@ class BaseBox extends Component implements BoxDelegate {
     public get boxContent(): HTMLDivElement {
         if (utils.empty(this._boxContent)) {
             let ele = document.createElement('div');
-            ele.classList.add(boxStyles['textbox-content']);
+            ele.classList.add(boxStyle['textbox-content']);
 
             this.components.forEach(component => {
                 ele.appendChild(component.element);
@@ -161,26 +192,27 @@ class BaseBox extends Component implements BoxDelegate {
         return this._boxContent!;
     }
 
-    public get titleElement(): HTMLSpanElement {
-        if (utils.empty(this._titleElement)) {
-            let ele = document.createElement('span');
-            ele.classList.add(boxStyles['textbox-title']);
-            ele.textContent = this.boxConfig.title;
-            this._titleElement = ele;
+    public get titleComponent(): MessageComponent {
+        if (utils.empty(this._titleComponent)) {
+            let presetTitleConfig = _.merge(new MessageInnerConfig(), {
+                class: messageComponentStyle.title,
+            });
+            this._titleComponent = new MessageComponent(this.outerConfig, "title", presetTitleConfig);
         }
-        return this._titleElement!;
+        return this._titleComponent!;
     }
     
-    public get cancelButton(): HTMLButtonElement {
+    public get cancelButton(): ButtonComponent {
         if (utils.empty(this._cancelButton)) {
-            let box = this;
-            let ele = document.createElement('button');
-            ele.classList.add(boxStyles['textbox-cancel']);
-            ele.onclick = () => {
-                box.destroy();
-            };
-            ele.innerHTML = buttonCancelSvg;
-            this._cancelButton = ele;
+            let presetButtonConfig = _.merge(new ButtonInnerConfig(), {
+                style: 'img',
+                text: '',
+                class: boxStyle['textbox-cancel'],
+                innerHTML: buttonCancelSvg,
+            });
+
+            this._cancelButton = new ButtonComponent(this.outerConfig, "x", presetButtonConfig);
+            this._cancelButton.boxDelegate = this;
         }
         return this._cancelButton!;
     }
@@ -188,7 +220,7 @@ class BaseBox extends Component implements BoxDelegate {
     /** More Function */
 
     public static RemoveAllBox() {
-        let allBox = document.getElementsByClassName(boxStyles['textbox-wrapper']);
+        let allBox = document.getElementsByClassName(boxStyle['textbox-wrapper']);
         while(allBox[0]) {
             allBox[0].remove();
         }
