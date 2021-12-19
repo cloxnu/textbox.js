@@ -9,16 +9,18 @@ import boxStyle from '../assets/css/textbox.css';
 import messageComponentStyle from '../assets/css/component/message.css';
 import BoxDelegate from './BoxDelegate';
 import { PresetConfigConverter, PresetConfigManager } from '../Config/PresetConfig';
-import { AliasConfigConverter, AliasConfigManager } from '../Config/AliasConfig';
+import { AliasConfigConverter, AliasConfigManager, AliasInnerConfig } from '../Config/AliasConfig';
 import { BoxConfig } from '../Config/BoxConfig';
 import { MessageComponent } from '../Component/MessageComponent';
 import { ButtonComponent } from '../Component/ButtonComponent';
 import { ButtonInnerConfig } from '../Config/ButtonConfig';
 import { MessageInnerConfig } from '../Config/MessageConfig';
+import { FilterConfig } from '../Config/FilterConfig';
 
 class BaseBox extends Component implements BoxDelegate {
     config: BoxConfig;
     outerConfig: OuterConfig;
+    storedAliasConfig: FilterConfig = {};
     exists: boolean = false;
 
     constructor(config?: UserConfig) {
@@ -37,22 +39,27 @@ class BaseBox extends Component implements BoxDelegate {
         return outerConfig;
     }
 
-    private loadAliasConfig(config: OuterConfig): OuterConfig {
-        let configManager = new AliasConfigManager(config);
+    private loadPresetConfig(config: OuterConfig): OuterConfig {
+        let configManager = new PresetConfigManager(config);
         return configManager.filter(config);
     }
 
-    private loadPresetConfig(config: OuterConfig): OuterConfig {
-        let configConverter = new PresetConfigManager(config);
-        return configConverter.filter(config);
+    private loadAliasConfig(config: OuterConfig): OuterConfig {
+        let configManager = new AliasConfigManager(config);
+        this.storedAliasConfig = configManager.storedAliasConfig;
+        return configManager.filter(config);
     }
 
     update(config?: UserConfig): void {
-        _.merge(this.outerConfig, this.loadConfig(config));
+        config = _.merge({}, this.storedAliasConfig, config);
+        config = this.loadConfig(config);
+        _.merge(this.outerConfig, config);
 
         this.titleComponent.update(this.outerConfig);
         this.cancelButton.update(this.outerConfig);
         
+        this.log('Updated config:', this.outerConfig);
+
         // Object.keys(new BoxConfig()).forEach(key => {
         //     console.log(key);
         //     if (config?.hasOwnProperty(key)) {

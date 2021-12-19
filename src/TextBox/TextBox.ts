@@ -12,9 +12,8 @@ class TextBox extends BaseBox {
     buttonGroupComponent: ButtonGroupComponent;
 
     constructor(config?: UserConfig) {
+        _.merge(config, TextBoxPreset.preset);
         super(config);
-        _.merge(this.outerConfig, TextBoxPreset.preset);
-        console.log(this.outerConfig);
         this.messageComponent = new MessageComponent(this.outerConfig);
         this.buttonGroupComponent = new ButtonGroupComponent(this.outerConfig);
         this.buttonGroupComponent.boxDelegate = this;

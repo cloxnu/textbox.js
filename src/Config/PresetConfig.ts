@@ -1,12 +1,11 @@
 import _ from "lodash";
 import utils from "../utils";
 import { ConfigConverter, ConfigManager, InnerConfig, OuterConfig } from "./Config";
+import { FilterConfig, FilterConfigManager } from "./FilterConfig";
 
-class PresetInnerConfig extends InnerConfig implements OuterConfig {
-    [key: string]: any;
-}
+class PresetInnerConfig extends FilterConfig {}
 
-class PresetConfigManager extends ConfigManager <PresetInnerConfig> {
+class PresetConfigManager extends FilterConfigManager <PresetInnerConfig> {
     get defaultName(): string {
         return "preset";
     }

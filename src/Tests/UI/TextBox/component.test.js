@@ -38,7 +38,7 @@ describe('TextBox button component', () => {
             tb = textbox({
                 button: 'btn',
             });
-            tb.buttonComponent.buttons[0].id = "testBtn";
+            tb.buttonGroupComponent.buttons[0].element.id = "testBtn";
             await sleep(800);
             return {
                 button: tb.buttonGroupComponent.buttons[0].element.innerText,
@@ -62,13 +62,13 @@ describe('TextBox button component', () => {
         await page.evaluate(async () => {
             tb = textbox({
                 button: {
+                    id: 'testBtn',
                     text: 'btn',
                     callback: function() {
                         return false;
                     }
                 }
             });
-            tb.buttonGroupComponent.buttons[0].element.id = "testBtn";
             await sleep(800);
         });
 
