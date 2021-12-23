@@ -17,9 +17,9 @@ For now, textbox is still in beta, but you can still copy the textbox.js code he
 <title>Getting Started | textbox.js</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/book.min.54bee09333bdf3655d2a34963079a2655fb4f4a3c0147ccb5bd62b368adee48e.css" integrity="sha256-VL7gkzO982VdKjSWMHmiZV&#43;09KPAFHzLW9YrNore5I4=" crossorigin="anonymous">
+<link rel="stylesheet" href="/book.min.2875cf38f79f5c0c5cb2445b82a9bc0d98c03007cfc4363e47c6efd543c4c116.css" integrity="sha256-KHXPOPefXAxcskRbgqm8DZjAMAfPxDY&#43;R8bv1UPEwRY=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.e928d08dc9507211c8adbdd7c09d5b9a05994e6677a969f716ca0cc4c381a7ac.js" integrity="sha256-6SjQjclQchHIrb3XwJ1bmgWZTmZ3qWn3FsoMxMOBp6w=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.bfd96397313996a2b0e0e9ad5b0cc99283b70b9cf3c49eea6e8464a5342d5fbd.js" integrity="sha256-v9ljlzE5lqKw4OmtWwzJkoO3C5zzxJ7qboRkpTQtX70=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -103,6 +103,32 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://textbox.clox.nu/docs/configuration/preset/" class="">Preset</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://textbox.clox.nu/docs/configuration/alias/" class="">Alias</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -120,6 +146,24 @@ https://github.com/alex-shpak/hugo-book
 
 
 
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/playground" target="_blank" rel="noopener">
+        Playground
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/cloxnu/textbox.js" target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+</ul>
 
 
 
@@ -163,6 +207,7 @@ https://github.com/alex-shpak/hugo-book
 <nav id="TableOfContents">
   <ul>
     <li><a href="#the-simplest-usage">The simplest usage</a></li>
+    <li><a href="#equivalent-usage">Equivalent usage</a></li>
     <li><a href="#whats-next">What&rsquo;s next</a></li>
   </ul>
 </nav>
@@ -213,7 +258,22 @@ https://github.com/alex-shpak/hugo-book
     &lt;/<span style="color:#f92672">body</span>&gt;
     &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;textbox.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
 &lt;/<span style="color:#f92672">html</span>&gt;
-</code></pre></div><h2 id="whats-next">
+</code></pre></div><h2 id="equivalent-usage">
+  Equivalent usage
+  <a class="anchor" href="#equivalent-usage">#</a>
+</h2>
+<p><code>textbox()</code> will generate a empty <code>TextBox</code> object, and render it to screen. So you can also realize it yourself.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tb</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TextBox</span>();
+<span style="color:#a6e22e">tb</span>.<span style="color:#a6e22e">render</span>();
+</code></pre></div>
+
+
+
+<a   class="book-btn try-btn">
+  TRY
+</a>
+
+<h2 id="whats-next">
   What&rsquo;s next
   <a class="anchor" href="#whats-next">#</a>
 </h2>
@@ -277,6 +337,7 @@ https://github.com/alex-shpak/hugo-book
 <nav id="TableOfContents">
   <ul>
     <li><a href="#the-simplest-usage">The simplest usage</a></li>
+    <li><a href="#equivalent-usage">Equivalent usage</a></li>
     <li><a href="#whats-next">What&rsquo;s next</a></li>
   </ul>
 </nav>

@@ -2,7 +2,6 @@
 title: "Title, Message and Buttons"
 date: 2021-12-20T00:19:25+08:00
 weight: 1
-draft: true
 ---
 
 # Title, Message and Buttons

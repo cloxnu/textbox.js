@@ -5,6 +5,14 @@ theme: 'hugo-book'
 
 publishdir: ../docs
 
+menu:
+  after:
+    - name: "Playground"
+      url: "/playground"
+      weight: 10
+    - name: "Github"
+      url: "https://github.com/cloxnu/textbox.js"
+      weight: 20
+
 params:
-  BookTheme: auto
   BookToC: true

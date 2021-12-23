@@ -2,7 +2,6 @@
 title: "Getting Started"
 date: 2021-12-19T20:17:04+08:00
 weight: 1
-draft: true
 ---
 
 # Getting Started
@@ -40,6 +39,17 @@ Your HTML code may look like:
     <script src="textbox.js"></script>
 </html>
 ```
+
+## Equivalent usage
+
+`textbox()` will generate a empty `TextBox` object, and render it to screen. So you can also realize it yourself.
+
+```javascript
+let tb = new TextBox();
+tb.render();
+```
+
+{{< button class="try-btn" >}} TRY {{< /button >}}
 
 ## What's next
 
