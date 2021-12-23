@@ -4,26 +4,30 @@ class ComponentConfig extends InnerConfig {
     id?: string;
     class?: string[] | string;
     innerHTML?: string;
+    color?: string;
 
     setIn(element: HTMLElement) {
-        if (this.id) {
-            element.id = this.id;
-        }
-        if (this.class) {
-            switch (typeof this.class) {
+        check(this.id, obj => element.id = obj);
+        check(this.class, obj => {
+            switch (typeof obj) {
                 case 'string':
-                    element.classList.add(this.class);
+                    element.classList.add(obj);
                     break;
                 case 'object':
-                    if (Array.isArray(this.class)) {
-                        element.classList.add(...this.class);
+                    if (Array.isArray(obj)) {
+                        element.classList.add(...obj);
                     }
                     break;
             }
-        }
-        if (this.innerHTML) {
-            element.innerHTML = this.innerHTML;
-        }
+        });
+        check(this.innerHTML, obj => element.innerHTML = obj);
+        check(this.color, obj => element.style.color = obj);
+    }
+}
+
+function check(obj: any, block: (obj: any) => void) {
+    if (obj) {
+        block(obj);
     }
 }
 

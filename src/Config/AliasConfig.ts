@@ -21,11 +21,14 @@ class AliasConfigManager extends FilterConfigManager <AliasInnerConfig> {
 
     filter(config: OuterConfig): OuterConfig {
         let continueToAlias = true;
-        do {
+        let times = 0;
+        while (continueToAlias && times < 10) {
             let result = this.shallowAlias(config);
             continueToAlias = result.hasChange;
             config = _.merge(result.config, config);
-        } while (continueToAlias);
+            this.update(config);
+            times ++;
+        };
         this.storedAliasConfig[this.name] = this.innerConfig;
 
         // 'alias' in the second level config.
