@@ -42,7 +42,7 @@ Your HTML code may look like:
 
 ## Equivalent usage
 
-`textbox()` will generate a empty `TextBox` object, and render it to screen. So you can also realize it yourself.
+`textbox()` will generate an empty `TextBox` object, and render it to screen. So you can also realize it yourself.
 
 ```javascript
 let tb = new TextBox();

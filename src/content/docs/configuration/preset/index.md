@@ -6,6 +6,8 @@ weight: 2
 
 # Preset
 
+## Overview
+
 Preset can add a 'preset' value to the configuration in advance, for example, you can preset the function of the button, and then you don't need to specify the button in the real configuration. Sometimes a lot of common code can be eliminated.
 
 ```javascript
@@ -43,3 +45,7 @@ textbox({
 ```
 
 {{< button class="try-btn" >}} TRY {{< /button >}}
+
+{{< hint warning >}}
+Preset can only be used at the first level of the configuration. In the future, this warning may change.
+{{< /hint >}}
