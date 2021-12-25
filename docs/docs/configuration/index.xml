@@ -24,8 +24,8 @@ textbox({ title: &amp;#39;Hello&amp;#39;, });  TRY  Did you see it? The title &a
       <pubDate>Tue, 21 Dec 2021 13:20:36 +0800</pubDate>
       
       <guid>https://textbox.clox.nu/docs/configuration/preset/</guid>
-      <description>Preset #  Preset can add a &amp;lsquo;preset&amp;rsquo; value to the configuration in advance, for example, you can preset the function of the button, and then you don&amp;rsquo;t need to specify the button in the real configuration. Sometimes a lot of common code can be eliminated.
-let oneDollarPayment = { btn_text: &amp;#39;Pay $1&amp;#39;, btn_callback() { textbox({ title: &amp;#39;Thanks!&amp;#39;, message: &amp;#39;Successful payment!&amp;#39;, }); return true; }, }; textbox({ title: &amp;#39;Check the order&amp;#39;, message: &amp;#39;Buy 5 diamonds&amp;#39;, preset: oneDollarPayment, });  TRY  Priority #  Preset will not overwrite the part of the current configuration that overlaps with the preset configuration, i.</description>
+      <description>Preset #  Overview #  Preset can add a &amp;lsquo;preset&amp;rsquo; value to the configuration in advance, for example, you can preset the function of the button, and then you don&amp;rsquo;t need to specify the button in the real configuration. Sometimes a lot of common code can be eliminated.
+const oneDollarPayment = { btn_text: &amp;#39;Pay $1&amp;#39;, btn_callback() { textbox({ title: &amp;#39;Thanks!&amp;#39;, message: &amp;#39;Successful payment!&amp;#39;, }); return true; }, }; textbox({ title: &amp;#39;Check the order&amp;#39;, message: &amp;#39;Buy 5 diamonds&amp;#39;, preset: oneDollarPayment, });  TRY  Priority #  Preset will not overwrite the part of the current configuration that overlaps with the preset configuration, i.</description>
     </item>
     
     <item>
@@ -35,8 +35,8 @@ let oneDollarPayment = { btn_text: &amp;#39;Pay $1&amp;#39;, btn_callback() { te
       
       <guid>https://textbox.clox.nu/docs/configuration/alias/</guid>
       <description>Alias #   You&amp;rsquo;ll be surprised to know that when you want to use buttons, it works fine whether you use button or buttons in the textbox configuration.
- Alias helps to replace complex key with simpler one in the configuration. For example, you can alias m to message, so you can configure messages with m in the configuration.
-textbox({ alias: { m: &amp;#39;message&amp;#39;, }, m: &amp;#39;I am message!&amp;#39;, })  TRY  </description>
+ Overview #  Alias helps to replace complex key with simpler one in the configuration. For example, you can alias m to message, so you can configure messages with m in the configuration.
+textbox({ alias: { m: &amp;#39;message&amp;#39;, }, m: &amp;#39;I am message!</description>
     </item>
     
   </channel>

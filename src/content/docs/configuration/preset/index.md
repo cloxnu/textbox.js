@@ -11,7 +11,7 @@ weight: 2
 Preset can add a 'preset' value to the configuration in advance, for example, you can preset the function of the button, and then you don't need to specify the button in the real configuration. Sometimes a lot of common code can be eliminated.
 
 ```javascript
-let oneDollarPayment = {
+const oneDollarPayment = {
     btn_text: 'Pay $1',
     btn_callback() {
         textbox({
