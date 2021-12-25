@@ -3,7 +3,7 @@ import BaseBox from "./BaseBox";
 import { Component } from "../Component/Component";
 import { MessageComponent } from "../Component/MessageComponent";
 import { ButtonGroupComponent } from "../Component/ButtonGroupComponent";
-import { UserConfig } from "../Config/Config";
+import { OuterConfig, UserConfig } from "../Config/Config";
 import _ from "lodash";
 import TextBoxPreset from "../Preset/TextBoxPreset";
 
@@ -11,9 +11,9 @@ class TextBox extends BaseBox {
     messageComponent: MessageComponent;
     buttonGroupComponent: ButtonGroupComponent;
 
-    constructor(config?: UserConfig) {
-        _.merge(config, TextBoxPreset.preset);
-        super(config);
+    constructor(config?: UserConfig, defaultConfig?: UserConfig) {
+        defaultConfig = _.merge({}, TextBoxPreset.preset, defaultConfig);
+        super(config, defaultConfig);
         this.messageComponent = new MessageComponent(this.outerConfig);
         this.buttonGroupComponent = new ButtonGroupComponent(this.outerConfig);
         this.buttonGroupComponent.boxDelegate = this;

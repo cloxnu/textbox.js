@@ -155,4 +155,22 @@ describe('TextBox preset config', () => {
         expect(actual.message).toBe('World');
         expect(actual.button).toBe('btn');
     });
+
+    test('priority', async () => {
+        let actual = await page.evaluate(() => {
+            let pre1 = {
+                title: 'Hello',
+            };
+            tb = textbox({
+                preset: pre1,
+                title: 'World',
+            });
+
+            return {
+                title: tb.titleComponent.element.innerText,
+            };
+        });
+
+        expect(actual.title).toBe('World');
+    });
 });

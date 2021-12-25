@@ -128,4 +128,30 @@ describe('TextBox default alias', () => {
 
         expect(actual.btn_text).toBe('btn');
     })
+});
+
+describe('TextBox alias priority', () => {
+    test('alias built-in alias', async () => {
+        let actual = await page.evaluate(() => {
+            let pre = {
+                alias: {
+                    btn_text: 'message',
+                },
+            };
+              
+            tb = textbox({
+                log: true,
+                preset: pre,
+                btn_text: 'Hello',
+            });
+
+            return {
+                message: tb.messageComponent.element.innerText,
+                btn_text: tb.buttonGroupComponent.buttons[0].element.innerText,
+            };
+        });
+
+        expect(actual.message).toBe('Hello');
+        expect(actual.btn_text).not.toBe('Hello');
+    })
 })

@@ -8,8 +8,8 @@ import { OuterConfig, UserConfig } from '../Config/Config';
 import boxStyle from '../assets/css/textbox.css';
 import messageComponentStyle from '../assets/css/component/message.css';
 import BoxDelegate from './BoxDelegate';
-import { PresetConfigConverter, PresetConfigManager } from '../Config/PresetConfig';
-import { AliasConfigConverter, AliasConfigManager, AliasInnerConfig } from '../Config/AliasConfig';
+import { PresetConfigManager } from '../Config/PresetConfig';
+import { AliasConfigManager } from '../Config/AliasConfig';
 import { BoxConfig } from '../Config/BoxConfig';
 import { MessageComponent } from '../Component/MessageComponent';
 import { ButtonComponent } from '../Component/ButtonComponent';
@@ -23,17 +23,18 @@ class BaseBox extends Component implements BoxDelegate {
     storedAliasConfig: FilterConfig = {};
     exists: boolean = false;
 
-    constructor(config?: UserConfig) {
+    constructor(config?: UserConfig, defaultConfig?: UserConfig) {
         super();
-        this.outerConfig = this.loadConfig(config);
+        this.outerConfig = this.loadConfig(config, defaultConfig);
         this.config = _.merge(new BoxConfig(), this.outerConfig);
         this.log('Load config:', this.outerConfig);
     }
 
-    private loadConfig(config?: UserConfig): OuterConfig {
+    private loadConfig(config?: UserConfig, defaultConfig?: UserConfig): OuterConfig {
         let outerConfig = config ?? {}
         if (typeof config != 'undefined') {
             outerConfig = this.loadPresetConfig(outerConfig);
+            outerConfig = _.merge(defaultConfig, outerConfig);
             outerConfig = this.loadAliasConfig(outerConfig);
         }
         return outerConfig;
