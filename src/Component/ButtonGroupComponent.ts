@@ -33,21 +33,25 @@ class ButtonGroupComponent extends ManageableComponent <ButtonGroupConfigManager
         </div>
         */
 
-        this.buttons = [];
-        this.config.buttons.forEach(buttonOuterConfig => {
-            let buttonComponent = new ButtonComponent(buttonOuterConfig, '');
-            buttonComponent.boxDelegate = this.boxDelegate;
-            this.buttons.push(buttonComponent);
-        });
-
         let div = document.createElement('div');
         div.classList.add(buttonGroupStyle["component-button-div"]);
 
-        this.buttons.forEach(button => {
-            div.appendChild(button.element);
-        });
+        this.configureElement(div);
 
         return div;
+    }
+
+    protected configureElement(element: HTMLElement): void {
+        this.config.buttons.forEach((buttonOuterConfig, idx) => {
+            if (idx < this.buttons.length) {
+                this.buttons[idx].update(buttonOuterConfig);
+            } else {
+                let buttonComponent = new ButtonComponent(buttonOuterConfig, '');
+                buttonComponent.boxDelegate = this.boxDelegate;
+                this.buttons.push(buttonComponent);
+                element.appendChild(buttonComponent.element);
+            }
+        })
     }
 }
 
