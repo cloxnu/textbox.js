@@ -19,15 +19,14 @@ abstract class Component {
     }
 
     public updateElement(): void {
-        if (!utils.empty(this._element)) {
-            let ele = this.buildElement();
-            this.config.setIn(ele);
-            this.element.replaceWith(ele);
-            this._element = ele;
+        if (this._element) {
+            this.config.setIn(this._element);
+            this.configureElement(this._element);
         }
     }
 
     protected abstract buildElement(): HTMLElement;
+    protected abstract configureElement(element: HTMLElement): void;
 }
 
 export {

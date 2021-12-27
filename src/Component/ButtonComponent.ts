@@ -14,15 +14,20 @@ class ButtonComponent extends ManageableComponent <ButtonConfigManager, ButtonIn
 
     protected buildElement(): HTMLButtonElement {
         let button = document.createElement('button');
-        button.classList.add(ButtonPreset.style[this.config.style] ?? '');
-        button.textContent = this.config.text;
-        button.onclick = () => {
+        this.configureElement(button);
+        return button;
+    }
+
+    protected configureElement(element: HTMLButtonElement): void {
+        element.classList.remove(...Object.keys(ButtonPreset.style));
+        element.classList.add(ButtonPreset.style[this.config.style] ?? '');
+        element.textContent = this.config.text;
+        element.onclick = () => {
             if (typeof this.config.callback == 'function' && 
                 this.config.callback(this.boxDelegate)) {
                 this.boxDelegate?.destroy();
             }
         }
-        return button;
     }
     
 }

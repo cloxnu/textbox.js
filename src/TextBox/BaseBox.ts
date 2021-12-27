@@ -55,6 +55,7 @@ class BaseBox extends Component implements BoxDelegate {
         config = _.merge({}, this.storedAliasConfig, config);
         config = this.loadConfig(config);
         _.merge(this.outerConfig, config);
+        _.merge(this.config, config);
 
         this.titleComponent.update(this.outerConfig);
         this.cancelButton.update(this.outerConfig);
@@ -148,6 +149,8 @@ class BaseBox extends Component implements BoxDelegate {
         div.appendChild(this.boxElement);
         return div;
     }
+
+    protected configureElement(element: HTMLElement): void {}
 
     public get backdrop(): HTMLDivElement {
         if (utils.empty(this._backdrop)) {

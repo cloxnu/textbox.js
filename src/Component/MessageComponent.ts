@@ -13,8 +13,12 @@ class MessageComponent extends ManageableComponent <MessageConfigManager, Messag
     protected buildElement(): HTMLElement {
         let ele = document.createElement('span');
         ele.classList.add(style["component-message"]);
-        ele.textContent = this.config.content;
+        this.configureElement(ele);
         return ele;
+    }
+
+    protected configureElement(element: HTMLElement) {
+        element.textContent = this.config.content;
     }
 }
 

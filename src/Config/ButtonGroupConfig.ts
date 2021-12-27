@@ -1,7 +1,4 @@
 import _ from "lodash";
-import BoxDelegate from "../TextBox/BoxDelegate";
-import utils from "../utils";
-import { ButtonConfigConverter, ButtonInnerConfig } from "./ButtonConfig";
 import { ConfigConverter, OuterConfig } from "./Config";
 import { ComponentConfig, ComponentConfigManager } from "./ComponentConfig";
 
