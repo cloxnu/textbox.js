@@ -16,6 +16,8 @@ import { ButtonComponent } from '../Component/ButtonComponent';
 import { ButtonInnerConfig } from '../Config/ButtonConfig';
 import { MessageInnerConfig } from '../Config/MessageConfig';
 import { FilterConfig } from '../Config/FilterConfig';
+import { ContainerComponent } from '../Component/ContainerComponent';
+import { ContainerInnerConfig } from '../Config/ContainerConfig';
 
 class BaseBox extends Component implements BoxDelegate {
     config: BoxConfig;
@@ -57,6 +59,7 @@ class BaseBox extends Component implements BoxDelegate {
         _.merge(this.outerConfig, config);
         _.merge(this.config, config);
 
+        this.titleBar.update(this.outerConfig);
         this.titleComponent.update(this.outerConfig);
         this.cancelButton.update(this.outerConfig);
         
@@ -137,7 +140,7 @@ class BaseBox extends Component implements BoxDelegate {
 
     private _backdrop?: HTMLDivElement;
     private _boxElement?: HTMLDivElement;
-    private _titleBar?: HTMLDivElement;
+    private _titleBar?: ContainerComponent;
     private _boxContent?: HTMLDivElement;
     private _titleComponent?: MessageComponent;
     private _cancelButton?: ButtonComponent;
@@ -165,20 +168,23 @@ class BaseBox extends Component implements BoxDelegate {
         if (utils.empty(this._boxElement)) {
             let ele = document.createElement('div');
             ele.classList.add(boxStyle.textbox);
-            ele.appendChild(this.titleBar);
+            ele.appendChild(this.titleBar.element);
             ele.appendChild(this.boxContent);
             this._boxElement = ele;
         }
         return this._boxElement!;
     }
 
-    public get titleBar(): HTMLDivElement {
+    public get titleBar(): ContainerComponent {
         if (utils.empty(this._titleBar)) {
-            let ele = document.createElement('div');
-            ele.classList.add(boxStyle['textbox-title-bar']);
-            ele.appendChild(this.titleComponent.element);
-            ele.appendChild(this.cancelButton.element);
-            this._titleBar = ele;
+            let presetTitleBarConfig = _.merge(new ContainerInnerConfig(), {
+                class: boxStyle['textbox-title-bar'],
+            });
+            this._titleBar = new ContainerComponent(this.outerConfig, "title_bar", presetTitleBarConfig);
+            this._titleBar.components = [
+                this.titleComponent,
+                this.cancelButton,
+            ]
         }
         return this._titleBar!;
     }
