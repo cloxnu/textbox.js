@@ -33,7 +33,7 @@ class ButtonGroupConfigConverter extends ConfigConverter <ButtonGroupInnerConfig
     }
 
     arrayValue(value: Array<any>): ButtonGroupInnerConfig {
-        let config = new ButtonGroupInnerConfig();
+        let config = this.defaultInnerConfig ?? new ButtonGroupInnerConfig();
         value.forEach(item => {
             config.buttons.push(item);
         })
@@ -47,7 +47,7 @@ class ButtonGroupConfigConverter extends ConfigConverter <ButtonGroupInnerConfig
     /** Private */
 
     private singleButton(value: any): ButtonGroupInnerConfig {
-        let config = new ButtonGroupInnerConfig();
+        let config = this.defaultInnerConfig ?? new ButtonGroupInnerConfig();
         config.buttons = [value]; 
         return config;
     }

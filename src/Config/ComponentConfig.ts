@@ -1,10 +1,15 @@
 import { ConfigManager, InnerConfig } from "./Config";
 
+type CssItemType = {property: string, value: string, priority?: string};
+
 class ComponentConfig extends InnerConfig {
     id?: string;
     class?: string[] | string;
     innerHTML?: string;
     color?: string;
+    bgColor?: string;
+    
+    css?: CssItemType[];
 
     setIn(element: HTMLElement) {
         check(this.id, obj => element.id = obj);
@@ -22,6 +27,13 @@ class ComponentConfig extends InnerConfig {
         });
         check(this.innerHTML, obj => element.innerHTML = obj);
         check(this.color, obj => element.style.color = obj);
+        check(this.bgColor, obj => element.style.backgroundColor = obj);
+
+        check(this.css, obj => {
+            obj.forEach((item: CssItemType) => {
+                element.style.setProperty(item.property, item.value, item.priority);
+            });
+        });
     }
 }
 
