@@ -59,19 +59,14 @@ class BaseBox extends Component implements BoxDelegate {
         _.merge(this.outerConfig, config);
         _.merge(this.config, config);
 
+        this.backdrop.update(this.outerConfig);
+        this.boxElement.update(this.outerConfig);
         this.titleBar.update(this.outerConfig);
+        this.boxContent.update(this.outerConfig);
         this.titleComponent.update(this.outerConfig);
         this.cancelButton.update(this.outerConfig);
         
         this.log('Updated config:', this.outerConfig);
-
-        // Object.keys(new BoxConfig()).forEach(key => {
-        //     console.log(key);
-        //     if (config?.hasOwnProperty(key)) {
-        //         _.merge(this.boxConfig, this.outerConfig);
-        //         this.updateElement();
-        //     }
-        // });
     }
 
     render(): void {
@@ -138,39 +133,43 @@ class BaseBox extends Component implements BoxDelegate {
 
     /** Element */
 
-    private _backdrop?: HTMLDivElement;
-    private _boxElement?: HTMLDivElement;
+    private _backdrop?: ContainerComponent;
+    private _boxElement?: ContainerComponent;
     private _titleBar?: ContainerComponent;
-    private _boxContent?: HTMLDivElement;
+    private _boxContent?: ContainerComponent;
     private _titleComponent?: MessageComponent;
     private _cancelButton?: ButtonComponent;
 
     protected buildElement(): HTMLElement {
         let div = document.createElement('div');
         div.classList.add(boxStyle['textbox-wrapper']);
-        div.appendChild(this.backdrop);
-        div.appendChild(this.boxElement);
+        div.appendChild(this.backdrop.element);
+        div.appendChild(this.boxElement.element);
         return div;
     }
 
     protected configureElement(element: HTMLElement): void {}
 
-    public get backdrop(): HTMLDivElement {
+    public get backdrop(): ContainerComponent {
         if (utils.empty(this._backdrop)) {
-            let ele = document.createElement('div');
-            ele.classList.add(boxStyle['textbox-backdrop']);
-            this._backdrop = ele;
+            let presetBackdropConfig = _.merge(new ContainerInnerConfig(), {
+                class: boxStyle['textbox-backdrop'],
+            });
+            this._backdrop = new ContainerComponent(this.config, "backdrop", presetBackdropConfig);
         }
         return this._backdrop!;
     }
 
-    public get boxElement(): HTMLDivElement {
+    public get boxElement(): ContainerComponent {
         if (utils.empty(this._boxElement)) {
-            let ele = document.createElement('div');
-            ele.classList.add(boxStyle.textbox);
-            ele.appendChild(this.titleBar.element);
-            ele.appendChild(this.boxContent);
-            this._boxElement = ele;
+            let presetBoxElementConfig = _.merge(new ContainerInnerConfig(), {
+                class: boxStyle.textbox,
+            });
+            this._boxElement = new ContainerComponent(this.config, "box", presetBoxElementConfig);
+            this._boxElement.components = [
+                this.titleBar,
+                this.boxContent,
+            ];
         }
         return this._boxElement!;
     }
@@ -189,15 +188,13 @@ class BaseBox extends Component implements BoxDelegate {
         return this._titleBar!;
     }
 
-    public get boxContent(): HTMLDivElement {
+    public get boxContent(): ContainerComponent {
         if (utils.empty(this._boxContent)) {
-            let ele = document.createElement('div');
-            ele.classList.add(boxStyle['textbox-content']);
-
-            this.components.forEach(component => {
-                ele.appendChild(component.element);
-            });
-            this._boxContent = ele;
+            let presetBoxContentConfig = _.merge(new ContainerInnerConfig(), {
+                class: boxStyle['textbox-content'],
+            }); 
+            this._boxContent = new ContainerComponent(this.outerConfig, "box_content", presetBoxContentConfig);
+            this._boxContent.components = this.components;
         }
         return this._boxContent!;
     }
