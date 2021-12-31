@@ -39,5 +39,14 @@ const oneDollarPayment = { btn_text: &amp;#39;Pay $1&amp;#39;, btn_callback() { 
 textbox({ alias: { m: &amp;#39;message&amp;#39;, }, m: &amp;#39;I am message!</description>
     </item>
     
+    <item>
+      <title>Update</title>
+      <link>https://textbox.clox.nu/docs/configuration/update/</link>
+      <pubDate>Thu, 30 Dec 2021 10:36:51 +0800</pubDate>
+      
+      <guid>https://textbox.clox.nu/docs/configuration/update/</guid>
+      <description>Update #  If you want to change the content or style of the textbox, try update.</description>
+    </item>
+    
   </channel>
 </rss>

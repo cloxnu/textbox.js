@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Box on textbox.js</title>
+    <link>https://textbox.clox.nu/docs/documentation/box/</link>
+    <description>Recent content in Box on textbox.js</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 31 Dec 2021 20:38:37 +0800</lastBuildDate><atom:link href="https://textbox.clox.nu/docs/documentation/box/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>TextBox</title>
+      <link>https://textbox.clox.nu/docs/documentation/box/textbox/</link>
+      <pubDate>Fri, 31 Dec 2021 21:09:25 +0800</pubDate>
+      
+      <guid>https://textbox.clox.nu/docs/documentation/box/textbox/</guid>
+      <description>TextBox #  The textbox.
+Declaration #  TextBox: BaseBox Preset #  { alias: { &#39;button&#39;: &#39;buttons&#39;, &#39;btn_text&#39;: [&#39;button&#39;, &#39;text&#39;], &#39;btn_callback&#39;: [&#39;button&#39;, &#39;callback&#39;], } } Configuration #  message: Message buttons: ButtonGroup </description>
+    </item>
+    
+    <item>
+      <title>BaseBox</title>
+      <link>https://textbox.clox.nu/docs/documentation/box/basebox/</link>
+      <pubDate>Fri, 31 Dec 2021 18:13:32 +0800</pubDate>
+      
+      <guid>https://textbox.clox.nu/docs/documentation/box/basebox/</guid>
+      <description>BaseBox #  The most basic box.
+Declaration #  BaseBox: Component Configuration #  Components #  backdrop: Container box: Container title_bar: Container box_content: Container title: Message x: Button The cancel button.
+Basic #  log: boolean </description>
+    </item>
+    
+  </channel>
+</rss>

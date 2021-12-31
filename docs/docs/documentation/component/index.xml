@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Component on textbox.js</title>
+    <link>https://textbox.clox.nu/docs/documentation/component/</link>
+    <description>Recent content in Component on textbox.js</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 31 Dec 2021 17:21:53 +0800</lastBuildDate><atom:link href="https://textbox.clox.nu/docs/documentation/component/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Container</title>
+      <link>https://textbox.clox.nu/docs/documentation/component/container/</link>
+      <pubDate>Fri, 31 Dec 2021 21:02:18 +0800</pubDate>
+      
+      <guid>https://textbox.clox.nu/docs/documentation/component/container/</guid>
+      <description>Container #  The container.
+Declaration #  Container: Component </description>
+    </item>
+    
+    <item>
+      <title>ButtonGroup</title>
+      <link>https://textbox.clox.nu/docs/documentation/component/buttongroup/</link>
+      <pubDate>Fri, 31 Dec 2021 20:54:28 +0800</pubDate>
+      
+      <guid>https://textbox.clox.nu/docs/documentation/component/buttongroup/</guid>
+      <description>ButtonGroup #  The combined component including multiple button components.
+Declaration #  ButtonGroup: Component Configuration #  buttons: string[] | string | Button[] | Button </description>
+    </item>
+    
+    <item>
+      <title>Button</title>
+      <link>https://textbox.clox.nu/docs/documentation/component/button/</link>
+      <pubDate>Fri, 31 Dec 2021 20:45:36 +0800</pubDate>
+      
+      <guid>https://textbox.clox.nu/docs/documentation/component/button/</guid>
+      <description>Button #  The button component.
+Declaration #  Button: Component Configuration #  text: string The text content of button component.
+callback: (_?: Box) =&amp;gt; boolean The called callback after the button is clicked.
+style: string The style of button. Valid values:
+ default (default) submit cancel img none  </description>
+    </item>
+    
+    <item>
+      <title>Message</title>
+      <link>https://textbox.clox.nu/docs/documentation/component/message/</link>
+      <pubDate>Fri, 31 Dec 2021 18:17:46 +0800</pubDate>
+      
+      <guid>https://textbox.clox.nu/docs/documentation/component/message/</guid>
+      <description>Message #  The message component.
+Declaration #  Message: Component Configuration #  content: string The content of message component.</description>
+    </item>
+    
+  </channel>
+</rss>
