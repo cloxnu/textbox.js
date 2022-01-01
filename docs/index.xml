@@ -55,7 +55,30 @@ textbox({ alias: { m: &amp;#39;message&amp;#39;, }, m: &amp;#39;I am message!</d
       <pubDate>Thu, 30 Dec 2021 10:36:51 +0800</pubDate>
       
       <guid>https://textbox.clox.nu/docs/configuration/update/</guid>
-      <description>Update #  If you want to change the content or style of the textbox, try update.</description>
+      <description>Update #  If you want to change the content or style of the textbox, try update.
+Overview #  textbox({ title: &amp;#39;Original Title&amp;#39;, btn_text: &amp;#39;Change Title&amp;#39;, btn_callback(tb) { tb.update({ title: &amp;#39;Updated Title&amp;#39;, }); }, });  TRY  </description>
+    </item>
+    
+    <item>
+      <title>Input</title>
+      <link>https://textbox.clox.nu/docs/documentation/component/input/</link>
+      <pubDate>Sat, 01 Jan 2022 19:49:17 +0800</pubDate>
+      
+      <guid>https://textbox.clox.nu/docs/documentation/component/input/</guid>
+      <description>Input #  The input component.
+Declaration #  Input: Component Configuration #  Attributes #  value: string ~&amp;gt; value type: string ~&amp;gt; type placeholder: string ~&amp;gt; placeholder maxLength: number ~&amp;gt; maxLength Configuration item ~&amp;gt; corresponding element attribute.
+type: The content type of the input element. possible values
+Basic #  focus_when_showing: boolean Auto-focus when box is visible.</description>
+    </item>
+    
+    <item>
+      <title>InputTextBox</title>
+      <link>https://textbox.clox.nu/docs/documentation/box/inputtextbox/</link>
+      <pubDate>Sat, 01 Jan 2022 19:46:43 +0800</pubDate>
+      
+      <guid>https://textbox.clox.nu/docs/documentation/box/inputtextbox/</guid>
+      <description>InputTextBox #  The textbox with input component.
+Declaration #  InputTextBox: TextBox Configuration #  input: Input </description>
     </item>
     
     <item>
@@ -74,7 +97,7 @@ Declaration #  TextBox: BaseBox Preset #  { alias: { &#39;button&#39;: &#39;butt
       <pubDate>Fri, 31 Dec 2021 21:02:18 +0800</pubDate>
       
       <guid>https://textbox.clox.nu/docs/documentation/component/container/</guid>
-      <description>Container #  The container.
+      <description>Container #  Container holds multiple components whose element is a div tag that is their parent node.
 Declaration #  Container: Component </description>
     </item>
     
@@ -96,9 +119,9 @@ Declaration #  ButtonGroup: Component Configuration #  buttons: string[] | strin
       <guid>https://textbox.clox.nu/docs/documentation/component/button/</guid>
       <description>Button #  The button component.
 Declaration #  Button: Component Configuration #  text: string The text content of button component.
-callback: (_?: Box) =&amp;gt; boolean The called callback after the button is clicked.
+callback: (_?: BaseBox) =&amp;gt; boolean The called callback after the button is clicked.
 style: string The style of button. Valid values:
- default (default) submit cancel img none  </description>
+ default (default) submit cancel waiting destroy img none  </description>
     </item>
     
     <item>
@@ -118,8 +141,11 @@ Declaration #  Message: Component Configuration #  content: string The content o
       
       <guid>https://textbox.clox.nu/docs/documentation/box/basebox/</guid>
       <description>BaseBox #  The most basic box.
-Declaration #  BaseBox: Component Configuration #  Components #  backdrop: Container box: Container title_bar: Container box_content: Container title: Message x: Button The cancel button.
-Basic #  log: boolean </description>
+Declaration #  BaseBox: Component Prototype #  render: () =&amp;gt; void Render and display this box. (Animate)
+show: () =&amp;gt; void Show this box from hidden state. (Animate)
+hide: () =&amp;gt; void Hide this box from non-hidden state. (Animate)
+destroy: (completion?: () =&amp;gt; void) =&amp;gt; void Destroy this box, and completion will be called when box is completely destroyed. (Animate)
+remove: () =&amp;gt; void Remove this box instantly.</description>
     </item>
     
     <item>

@@ -8,6 +8,16 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 31 Dec 2021 20:38:37 +0800</lastBuildDate><atom:link href="https://textbox.clox.nu/docs/documentation/box/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>InputTextBox</title>
+      <link>https://textbox.clox.nu/docs/documentation/box/inputtextbox/</link>
+      <pubDate>Sat, 01 Jan 2022 19:46:43 +0800</pubDate>
+      
+      <guid>https://textbox.clox.nu/docs/documentation/box/inputtextbox/</guid>
+      <description>InputTextBox #  The textbox with input component.
+Declaration #  InputTextBox: TextBox Configuration #  input: Input </description>
+    </item>
+    
+    <item>
       <title>TextBox</title>
       <link>https://textbox.clox.nu/docs/documentation/box/textbox/</link>
       <pubDate>Fri, 31 Dec 2021 21:09:25 +0800</pubDate>
@@ -24,8 +34,11 @@ Declaration #  TextBox: BaseBox Preset #  { alias: { &#39;button&#39;: &#39;butt
       
       <guid>https://textbox.clox.nu/docs/documentation/box/basebox/</guid>
       <description>BaseBox #  The most basic box.
-Declaration #  BaseBox: Component Configuration #  Components #  backdrop: Container box: Container title_bar: Container box_content: Container title: Message x: Button The cancel button.
-Basic #  log: boolean </description>
+Declaration #  BaseBox: Component Prototype #  render: () =&amp;gt; void Render and display this box. (Animate)
+show: () =&amp;gt; void Show this box from hidden state. (Animate)
+hide: () =&amp;gt; void Hide this box from non-hidden state. (Animate)
+destroy: (completion?: () =&amp;gt; void) =&amp;gt; void Destroy this box, and completion will be called when box is completely destroyed. (Animate)
+remove: () =&amp;gt; void Remove this box instantly.</description>
     </item>
     
   </channel>

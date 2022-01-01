@@ -8,12 +8,24 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 31 Dec 2021 17:21:53 +0800</lastBuildDate><atom:link href="https://textbox.clox.nu/docs/documentation/component/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Input</title>
+      <link>https://textbox.clox.nu/docs/documentation/component/input/</link>
+      <pubDate>Sat, 01 Jan 2022 19:49:17 +0800</pubDate>
+      
+      <guid>https://textbox.clox.nu/docs/documentation/component/input/</guid>
+      <description>Input #  The input component.
+Declaration #  Input: Component Configuration #  Attributes #  value: string ~&amp;gt; value type: string ~&amp;gt; type placeholder: string ~&amp;gt; placeholder maxLength: number ~&amp;gt; maxLength Configuration item ~&amp;gt; corresponding element attribute.
+type: The content type of the input element. possible values
+Basic #  focus_when_showing: boolean Auto-focus when box is visible.</description>
+    </item>
+    
+    <item>
       <title>Container</title>
       <link>https://textbox.clox.nu/docs/documentation/component/container/</link>
       <pubDate>Fri, 31 Dec 2021 21:02:18 +0800</pubDate>
       
       <guid>https://textbox.clox.nu/docs/documentation/component/container/</guid>
-      <description>Container #  The container.
+      <description>Container #  Container holds multiple components whose element is a div tag that is their parent node.
 Declaration #  Container: Component </description>
     </item>
     
@@ -35,9 +47,9 @@ Declaration #  ButtonGroup: Component Configuration #  buttons: string[] | strin
       <guid>https://textbox.clox.nu/docs/documentation/component/button/</guid>
       <description>Button #  The button component.
 Declaration #  Button: Component Configuration #  text: string The text content of button component.
-callback: (_?: Box) =&amp;gt; boolean The called callback after the button is clicked.
+callback: (_?: BaseBox) =&amp;gt; boolean The called callback after the button is clicked.
 style: string The style of button. Valid values:
- default (default) submit cancel img none  </description>
+ default (default) submit cancel waiting destroy img none  </description>
     </item>
     
     <item>

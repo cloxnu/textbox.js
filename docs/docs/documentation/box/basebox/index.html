@@ -4,13 +4,19 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="BaseBox #  The most basic box.
-Declaration #  BaseBox: Component Configuration #  Components #  backdrop: Container box: Container title_bar: Container box_content: Container title: Message x: Button The cancel button.
-Basic #  log: boolean ">
+Declaration #  BaseBox: Component Prototype #  render: () =&gt; void Render and display this box. (Animate)
+show: () =&gt; void Show this box from hidden state. (Animate)
+hide: () =&gt; void Hide this box from non-hidden state. (Animate)
+destroy: (completion?: () =&gt; void) =&gt; void Destroy this box, and completion will be called when box is completely destroyed. (Animate)
+remove: () =&gt; void Remove this box instantly.">
 <meta name="theme-color" content="#FFFFFF">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="BaseBox" />
 <meta property="og:description" content="BaseBox #  The most basic box.
-Declaration #  BaseBox: Component Configuration #  Components #  backdrop: Container box: Container title_bar: Container box_content: Container title: Message x: Button The cancel button.
-Basic #  log: boolean " />
+Declaration #  BaseBox: Component Prototype #  render: () =&gt; void Render and display this box. (Animate)
+show: () =&gt; void Show this box from hidden state. (Animate)
+hide: () =&gt; void Hide this box from non-hidden state. (Animate)
+destroy: (completion?: () =&gt; void) =&gt; void Destroy this box, and completion will be called when box is completely destroyed. (Animate)
+remove: () =&gt; void Remove this box instantly." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://textbox.clox.nu/docs/documentation/box/basebox/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-12-31T18:13:32+08:00" />
@@ -21,7 +27,7 @@ Basic #  log: boolean " />
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.2875cf38f79f5c0c5cb2445b82a9bc0d98c03007cfc4363e47c6efd543c4c116.css" integrity="sha256-KHXPOPefXAxcskRbgqm8DZjAMAfPxDY&#43;R8bv1UPEwRY=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.f8380e02c46dc631341b5cff6100f06a0525c0c6f06795243b6292aa7db0e591.js" integrity="sha256-&#43;DgOAsRtxjE0G1z/YQDwagUlwMbwZ5UkO2KSqn2w5ZE=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.45fd6c1e104499dbdfc1724d30e19bc1452f6035980cbc71664bbb6b18e69745.js" integrity="sha256-Rf1sHhBEmdvfwXJNMOGbwUUvYDWYDLxxZku7axjml0U=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -188,6 +194,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="https://textbox.clox.nu/docs/documentation/box/inputtextbox/" class="">InputTextBox</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="https://textbox.clox.nu/docs/documentation/box/textbox/" class="">TextBox</a>
   
 
@@ -227,6 +246,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://textbox.clox.nu/docs/documentation/component/input/" class="">Input</a>
+  
+
+        </li>
+      
     
       
         <li>
@@ -363,12 +395,14 @@ https://github.com/alex-shpak/hugo-book
 <nav id="TableOfContents">
   <ul>
     <li><a href="#declaration">Declaration</a></li>
+    <li><a href="#prototype">Prototype</a></li>
     <li><a href="#configuration">Configuration</a>
       <ul>
         <li><a href="#components">Components</a></li>
         <li><a href="#basic">Basic</a></li>
       </ul>
     </li>
+    <li><a href="#example">Example</a></li>
   </ul>
 </nav>
 
@@ -391,7 +425,23 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#declaration">#</a>
 </h2>
 <pre tabindex="0"><code>BaseBox: <a href="../../component/">Component</a>
-</code></pre><h2 id="configuration">
+</code></pre><h2 id="prototype">
+  Prototype
+  <a class="anchor" href="#prototype">#</a>
+</h2>
+<pre tabindex="0"><code>render: () =&gt; void
+</code></pre><p>Render and display this box. (Animate)</p>
+<pre tabindex="0"><code>show: () =&gt; void
+</code></pre><p>Show this box from hidden state. (Animate)</p>
+<pre tabindex="0"><code>hide: () =&gt; void
+</code></pre><p>Hide this box from non-hidden state. (Animate)</p>
+<pre tabindex="0"><code>destroy: (completion?: () =&gt; void) =&gt; void
+</code></pre><p>Destroy this box, and <code>completion</code> will be called when box is completely destroyed. (Animate)</p>
+<pre tabindex="0"><code>remove: () =&gt; void
+</code></pre><p>Remove this box instantly.</p>
+<pre tabindex="0"><code>update: (config?: object) =&gt; void
+</code></pre><p>Update this box with new config.</p>
+<h2 id="configuration">
   Configuration
   <a class="anchor" href="#configuration">#</a>
 </h2>
@@ -405,13 +455,27 @@ https://github.com/alex-shpak/hugo-book
 </code></pre><pre tabindex="0"><code>box_content: <a href="../../component/container/">Container</a>
 </code></pre><pre tabindex="0"><code>title: <a href="../../component/message/">Message</a>
 </code></pre><pre tabindex="0"><code>x: <a href="../../component/button/">Button</a>
-</code></pre><p>The cancel button.</p>
+</code></pre><p>The close button.</p>
 <h3 id="basic">
   Basic
   <a class="anchor" href="#basic">#</a>
 </h3>
 <pre tabindex="0"><code>log: boolean
-</code></pre></article>
+</code></pre><h2 id="example">
+  Example
+  <a class="anchor" href="#example">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">box</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">BaseBox</span>();
+<span style="color:#a6e22e">box</span>.<span style="color:#a6e22e">render</span>();
+</code></pre></div>
+
+
+
+<a   class="book-btn try-btn">
+  TRY
+</a>
+
+</article>
  
       
 
@@ -471,12 +535,14 @@ https://github.com/alex-shpak/hugo-book
 <nav id="TableOfContents">
   <ul>
     <li><a href="#declaration">Declaration</a></li>
+    <li><a href="#prototype">Prototype</a></li>
     <li><a href="#configuration">Configuration</a>
       <ul>
         <li><a href="#components">Components</a></li>
         <li><a href="#basic">Basic</a></li>
       </ul>
     </li>
+    <li><a href="#example">Example</a></li>
   </ul>
 </nav>
 
