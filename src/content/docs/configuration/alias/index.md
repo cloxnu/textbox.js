@@ -149,6 +149,12 @@ textbox({
 {{< button class="try-btn" >}} TRY {{< /button >}}
 
 {{< hint warning >}}
+**⚠️ Warning: Invalid alias**
+
+Aliasing a value to the same value, or the same value at the first level, the alias is invalid.
+{{< /hint >}}
+
+{{< hint warning >}}
 **⚠️ Warning: Avoid alias loops**
 
 If there is an alias loop in the alias configuration, you will get an unexpected result. As protection, aliases can be executed up to **10 times**.

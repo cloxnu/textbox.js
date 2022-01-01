@@ -9,6 +9,14 @@ bookCollapseSection: true
 
 The most basic component, corresponding to an element.
 
+## Prototype
+
+```
+element: HTMLElement
+```
+
+The element corresponding to this component.
+
 ## Configuration
 
 ### Attributes
@@ -25,25 +33,33 @@ class: string[] | string
 
 The value of element's class content attribute.
 
+```
+attr: object[] | object
+```
+
 ### Basic
 
 ```
-innerHTML: string => innerHTML
+innerHTML: string ~> innerHTML
 ```
 
-Configuration item => corresponding element property.
+Configuration item ~> corresponding element property.
 
 ### Styles
 
 ```
-color: string => color
-bgColor: string => backgroundColor
+color: string ~> color
+bgColor: string ~> backgroundColor
 ```
 
-Configuration item => corresponding style property.
+Configuration item ~> corresponding style property.
 
 ```
-css: {{< raw >}}<a>CssProperty</a>{{< /raw >}}
+css: {{< raw >}}<a>CssProperty</a>{{< /raw >}}[] | {{< raw >}}<a>CssProperty</a>{{< /raw >}}
+```
+
+```
+csskv: object[] | object
 ```
 
 

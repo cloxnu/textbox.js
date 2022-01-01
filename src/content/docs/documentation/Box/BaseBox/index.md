@@ -13,6 +13,44 @@ The most basic box.
 BaseBox: {{< raw >}}<a href="../../component/">Component</a>{{< /raw >}}
 ```
 
+## Prototype
+
+```
+render: () => void
+```
+
+Render and display this box. (Animate)
+
+```
+show: () => void
+```
+
+Show this box from hidden state. (Animate)
+
+```
+hide: () => void
+```
+
+Hide this box from non-hidden state. (Animate)
+
+```
+destroy: (completion?: () => void) => void
+```
+
+Destroy this box, and `completion` will be called when box is completely destroyed. (Animate)
+
+```
+remove: () => void
+```
+
+Remove this box instantly.
+
+```
+update: (config?: object) => void
+```
+
+Update this box with new config.
+
 ## Configuration
 
 ### Components
@@ -41,10 +79,19 @@ title: {{< raw >}}<a href="../../component/message/">Message</a>{{< /raw >}}
 x: {{< raw >}}<a href="../../component/button/">Button</a>{{< /raw >}}
 ```
 
-The cancel button.
+The close button.
 
 ### Basic
 
 ```
 log: boolean
 ```
+
+## Example
+
+```javascript
+let box = new BaseBox();
+box.render();
+```
+
+{{< button class="try-btn" >}} TRY {{< /button >}}

@@ -22,7 +22,7 @@ text: string
 The text content of button component.
 
 ```
-callback: (_?: Box) => boolean
+callback: (_?: BaseBox) => boolean
 ```
 
 The called callback after the button is clicked.
@@ -36,5 +36,7 @@ The style of button. Valid values:
 - `default` (default)
 - `submit`
 - `cancel`
+- `waiting`
+- `destroy`
 - `img`
 - `none`
