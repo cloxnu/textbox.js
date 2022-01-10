@@ -36,8 +36,6 @@ class ButtonGroupComponent extends ManageableComponent <ButtonGroupConfigManager
         let div = document.createElement('div');
         div.classList.add(buttonGroupStyle["component-button-div"]);
 
-        this.configureElement(div);
-
         return div;
     }
 

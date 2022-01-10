@@ -25,6 +25,18 @@
     border: 2px solid var(--foreground);
 }
 
+.waiting-btn, .submit-btn:disabled {
+    cursor: wait;
+    color: grey;
+    background-color: var(--clear-gray);
+    border: 2px solid var(--clear-gray);
+}
+
+.destroy-btn {
+    color: var(--background);
+    background-color: var(--red);
+    border: 2px solid var(--red);
+}
 
 .img-btn {
     display: flex;

@@ -16,6 +16,7 @@ class ComponentConfig extends InnerConfig {
     color?: string;
     bgColor?: string;
     
+    attr?: object;
     css?: CssItemType[] | CssItemType;
     csskv?: object;
 
@@ -44,6 +45,15 @@ class ComponentConfig extends InnerConfig {
                     element.style.setProperty(item.property, item.value, item.priority);
                 }
             });
+        });
+
+        check(this.attr, Type.Dictionary, obj => {
+            for (const key in obj) {
+                if (Object.prototype.hasOwnProperty.call(obj, key)) {
+                    const value = obj[key];
+                    element.setAttribute(key, value);
+                }
+            }
         });
 
         check(this.csskv, Type.Dictionary, obj => {

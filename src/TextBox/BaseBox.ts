@@ -6,6 +6,7 @@ import utils from '../utils';
 import { Component } from '../Component/Component';
 import { OuterConfig, UserConfig } from '../Config/Config';
 import boxStyle from '../assets/css/textbox.css';
+import mainStyle from '../assets/css/main.css';
 import messageComponentStyle from '../assets/css/component/message.css';
 import BoxDelegate from './BoxDelegate';
 import { PresetConfigManager } from '../Config/PresetConfig';
@@ -72,11 +73,13 @@ class BaseBox extends Component implements BoxDelegate {
     render(): void {
         this._show();
         if (this.exists) {
+            this.onAppear();
             return;
         }
         this.log('Box render:', this.config.id);
         this.exists = true;
         document.body.appendChild(this.element);
+        this.onAppear();
     }
 
     private _show(): void {
@@ -90,12 +93,14 @@ class BaseBox extends Component implements BoxDelegate {
     show(): void {
         if (this.exists) {
             this._show();
+            this.onAppear();
         }
     }
 
     hide(): void {
         if (this.exists) {
             this._hide();
+            this.onDisappear();
         }
     }
 
@@ -105,6 +110,7 @@ class BaseBox extends Component implements BoxDelegate {
         }
         this.log('Box destory:', this.config.id);
         this._hide();
+        this.onDisappear();
         this.exists = false;
         setTimeout(() => {
             if (!this.exists) {
@@ -119,7 +125,11 @@ class BaseBox extends Component implements BoxDelegate {
     remove(): void {
         this.exists = false;
         this.element.remove();
+        this.onDisappear();
     }
+
+    onAppear(): void {}
+    onDisappear(): void {}
 
     protected get components(): Component[] {
         return [];
@@ -142,7 +152,7 @@ class BaseBox extends Component implements BoxDelegate {
 
     protected buildElement(): HTMLElement {
         let div = document.createElement('div');
-        div.classList.add(boxStyle['textbox-wrapper']);
+        div.classList.add(boxStyle['textbox-wrapper'], mainStyle['textbox-wrapper']);
         div.appendChild(this.backdrop.element);
         div.appendChild(this.boxElement.element);
         return div;

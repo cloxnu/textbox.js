@@ -1,0 +1,20 @@
+.component-input {
+    width: 100%;
+    outline-style: none;
+    text-align: center;
+    background-color: var(--background);
+    border: 2px solid #d0d0d0;
+    padding: 1px 2px;
+    font-size: 16px;
+    height: 40px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.component-input:focus {
+    border: 2px solid var(--foreground);
+}
+
+.component-input:disabled {
+    background-color: var(--clear-gray);
+}
