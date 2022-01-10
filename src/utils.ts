@@ -25,9 +25,16 @@ function isArray(item: any): boolean {
     return (item && typeof item === 'object' && Array.isArray(item));
 }
 
+function check(obj: any, block: (obj: any) => void) {
+    if (obj) {
+        block(obj);
+    }
+}
+
 export default {
     generate_id,
     empty,
     isObject,
     isArray,
+    check,
 };

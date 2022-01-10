@@ -1,11 +1,14 @@
+import _ from "lodash";
 import { InputComponent } from "../Component/InputComponent";
 import { UserConfig } from "../Config/Config";
+import InputTextBoxPreset from "../Preset/InputTextBoxPreset";
 import TextBox from "./TextBox";
 
 class InputTextBox extends TextBox {
     inputComponent: InputComponent;
 
     constructor(config?: UserConfig, defaultConfig?: UserConfig) {
+        defaultConfig = _.merge({}, InputTextBoxPreset.preset, defaultConfig);
         super(config, defaultConfig);
         this.inputComponent = new InputComponent(this.outerConfig);
     }

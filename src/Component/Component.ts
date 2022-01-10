@@ -1,5 +1,4 @@
-import { ComponentConfig, ComponentConfigManager } from "../Config/ComponentConfig";
-import { OuterConfig } from "../Config/Config";
+import { ComponentConfig } from "../Config/ComponentConfig";
 import utils from "../utils";
 
 abstract class Component {
@@ -13,6 +12,7 @@ abstract class Component {
     public get element(): HTMLElement {
         if (utils.empty(this._element)) {
             this._element = this.buildElement();
+            this.configureElement(this._element);
             this.config.setIn(this._element);
         }
         return this._element!;

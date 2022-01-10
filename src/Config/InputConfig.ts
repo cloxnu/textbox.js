@@ -7,7 +7,7 @@ class InputInnerConfig extends ComponentConfig {
     focus_when_showing: boolean = true;
     value: string = '';
     placeholder: string = '';
-    maxLength: number = -1;
+    max_length?: number;
 }
 
 class InputConfigManager extends ComponentConfigManager <InputInnerConfig> {

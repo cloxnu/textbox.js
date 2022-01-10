@@ -14,7 +14,6 @@ class ButtonComponent extends ManageableComponent <ButtonConfigManager, ButtonIn
 
     protected buildElement(): HTMLButtonElement {
         let button = document.createElement('button');
-        this.configureElement(button);
         return button;
     }
 

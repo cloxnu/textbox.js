@@ -2,6 +2,7 @@ import { OuterConfig } from "../Config/Config";
 import { InputConfigManager, InputInnerConfig } from "../Config/InputConfig";
 import { ManageableComponent } from "./ManageableComponent";
 import inputStyle from '../assets/css/component/input.css';
+import utils from "../utils";
 
 class InputComponent extends ManageableComponent <InputConfigManager, InputInnerConfig> {
     constructor(config: OuterConfig, name?: string, defaultInnerConfig?: InputInnerConfig) {
@@ -11,7 +12,6 @@ class InputComponent extends ManageableComponent <InputConfigManager, InputInner
     protected buildElement(): HTMLInputElement {
         let input = document.createElement('input');
         input.classList.add(inputStyle["component-input"]);
-        this.configureElement(input);
 
         return input;
     }
@@ -20,7 +20,7 @@ class InputComponent extends ManageableComponent <InputConfigManager, InputInner
         element.type = this.config.type;
         element.value = this.config.value;
         element.placeholder = this.config.placeholder;
-        element.maxLength = this.config.maxLength;
+        utils.check(this.config.max_length, obj => element.maxLength = obj);
     }
 }
 
