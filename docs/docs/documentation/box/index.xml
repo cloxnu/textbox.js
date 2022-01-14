@@ -14,7 +14,7 @@
       
       <guid>https://textbox.clox.nu/docs/documentation/box/inputtextbox/</guid>
       <description>InputTextBox #  The textbox with input component.
-Declaration #  InputTextBox: TextBox Configuration #  input: Input </description>
+Declaration #  InputTextBox: TextBox Preset #  { alias: { &#39;input_text&#39;: [&#39;input&#39;, &#39;value&#39;], &#39;input_type&#39;: [&#39;input&#39;, &#39;type&#39;], &#39;placeholder&#39;: [&#39;input&#39;, &#39;placeholder&#39;], &#39;max_length&#39;: [&#39;input&#39;, &#39;max_length&#39;], } } Configuration #  input: Input </description>
     </item>
     
     <item>

@@ -14,9 +14,9 @@
       
       <guid>https://textbox.clox.nu/docs/documentation/component/input/</guid>
       <description>Input #  The input component.
-Declaration #  Input: Component Configuration #  Attributes #  value: string ~&amp;gt; value type: string ~&amp;gt; type placeholder: string ~&amp;gt; placeholder maxLength: number ~&amp;gt; maxLength Configuration item ~&amp;gt; corresponding element attribute.
+Declaration #  Input: Component Configuration #  Attributes #  value: string ~&amp;gt; value type: string ~&amp;gt; type placeholder: string ~&amp;gt; placeholder max_length: number ~&amp;gt; maxLength Configuration item ~&amp;gt; corresponding element attribute.
 type: The content type of the input element. possible values
-Basic #  focus_when_showing: boolean Auto-focus when box is visible.</description>
+Basic #  focus_when_showing: boolean Auto-focus when box is visible. (default true)</description>
     </item>
     
     <item>
