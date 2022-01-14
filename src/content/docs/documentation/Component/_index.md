@@ -37,6 +37,8 @@ The value of element's class content attribute.
 attr: object[] | object
 ```
 
+The element's attributes. Pass in as a key-value pair or an array of key-value pairs.
+
 ### Basic
 
 ```

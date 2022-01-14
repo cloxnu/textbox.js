@@ -13,6 +13,19 @@ The textbox with input component.
 InputTextBox: {{< raw >}}<a href="../textbox/">TextBox</a>{{< /raw >}}
 ```
 
+## Preset
+
+```
+{
+    alias: {
+        'input_text': ['input', 'value'],
+        'input_type': ['input', 'type'],
+        'placeholder': ['input', 'placeholder'],
+        'max_length': ['input', 'max_length'],
+    }
+}
+```
+
 ## Configuration
 
 ```

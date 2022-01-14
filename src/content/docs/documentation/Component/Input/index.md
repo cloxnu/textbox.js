@@ -21,7 +21,7 @@ Input: {{< raw >}}<a href="../">Component</a>{{< /raw >}}
 value: string ~> value
 type: string ~> type
 placeholder: string ~> placeholder
-maxLength: number ~> maxLength
+max_length: number ~> maxLength
 ```
 
 Configuration item ~> corresponding element attribute.
@@ -34,5 +34,5 @@ Configuration item ~> corresponding element attribute.
 focus_when_showing: boolean
 ```
 
-Auto-focus when box is visible.
+Auto-focus when box is visible. (default true)
 
